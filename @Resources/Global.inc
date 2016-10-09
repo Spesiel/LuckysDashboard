@@ -7,9 +7,9 @@ BackgroundMargins=0,0,0,0
 ;------------------------------------------------------------------------------
 ; Custom context menu to access different configuration options 
 
-ContextTitle=Configure settings
-ContextAction=[!ActivateConfig "#RootConfig#\Settings" "Settings.ini"]
-ContextTitle2=Themes
+ContextTitle=Configure Scale settings
+ContextAction=[!ActivateConfig "#RootConfig#\ScaleSettings" "ScaleSettings.ini"]
+ContextTitle2=Configure Themes
 ContextAction2=[!ActivateConfig "#RootConfig#\Themes" "Themes.ini"]
 ContextTitle3=------------------
 ContextTitle4=Refresh All
