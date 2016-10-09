@@ -1,0 +1,16 @@
+[MeterClose]
+Meter=String
+X=([SkinSizing:W]-10)
+Y=10
+W=16
+H=16
+StringAlign=Right
+StringStyle=Bold
+FontSize=12
+SolidColor=250,100,100
+FontColor=0,0,0
+Text=X
+AntiAlias=1
+LeftMouseUpAction=[!DeactivateConfig]
+DynamicVariables=1
+UpdateDivider=-1
