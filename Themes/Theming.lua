@@ -26,7 +26,6 @@ function Apply(
 end
 
 -- Load all schemes from file
-schemes = {}
 function Initialize()
     -- load ini file
 	local file = assert(io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt','r'), 'Unable to open ColorSchemes.txt')

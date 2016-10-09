@@ -24,6 +24,10 @@ Information=Default values for every component
 License=Creative Commons BY-NC-SA 3.0
 Version=0.0.1
 
+[VarFileInit]
+Measure=Script
+ScriptFile=#@#\VarFileInit.lua
+
 @includeVariables=Variables.inc
 
 [Variables]
