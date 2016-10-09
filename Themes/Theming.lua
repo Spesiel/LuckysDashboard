@@ -50,7 +50,10 @@ function Initialize()
 	file:close()
 	
     -- generate the buttons for previewing and applying the theme
-    local generated = assert(io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'generated.inc','w+'), 'Unable to open generated.inc')
+    local doRefresh = false
+    local testIfExist=io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'generated.inc',"r")
+    if testIfExist~=nil then io.close(testIfExist) doRefresh = false else doRefresh = true end
+    local generated = io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'generated.inc','w+')
 
     -- loop through the different color schemes (themes) in the txt file
     local currentTheme = 0
@@ -91,5 +94,8 @@ function Initialize()
     end
     generated:close()
 
+    if doRefresh then
+        SKIN:Bang('!Refresh')
+    end
     SKIN:Bang('!Updategroup Preview')
 end

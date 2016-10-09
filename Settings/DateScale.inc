@@ -40,8 +40,8 @@ X=-190r
 Y=0r
 W=143
 H=20
-MouseScrollUpAction=[!WriteKeyValue Variables ScaleDate [DateScale_MeasureScaleUp] "#@#Global.inc"][!RefreshGroup Date]
-MouseScrollDownAction=[!WriteKeyValue Variables ScaleDate [DateScale_MeasureScaleDown] "#@#Global.inc"][!RefreshGroup Date]
+MouseScrollUpAction=[!WriteKeyValue Variables ScaleDate [DateScale_MeasureScaleUp] "#@#Variables.inc"][!RefreshGroup Date]
+MouseScrollDownAction=[!WriteKeyValue Variables ScaleDate [DateScale_MeasureScaleDown] "#@#Variables.inc"][!RefreshGroup Date]
 DynamicVariables=1
 
 [DateScale_MeterSet1.0]
@@ -51,7 +51,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.0" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.0" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.0line]
 Meter=Image
@@ -68,7 +68,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.1" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.1" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.1line]
 Meter=Image
@@ -85,7 +85,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.2" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.2" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.2line]
 Meter=Image
@@ -102,7 +102,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.3" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.3" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.3line]
 Meter=Image
@@ -119,7 +119,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.4" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.4" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.4line]
 Meter=Image
@@ -136,7 +136,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.5" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.5" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.5line]
 Meter=Image
@@ -153,7 +153,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.6" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.6" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.6line]
 Meter=Image
@@ -170,7 +170,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.7" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.7" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.7line]
 Meter=Image
@@ -187,7 +187,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.8" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.8" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.8line]
 Meter=Image
@@ -204,7 +204,7 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.9" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "1.9" "#@#Variables.inc"][!RefreshGroup Date]
 
 [DateScale_MeterSet1.9line]
 Meter=Image
@@ -221,4 +221,4 @@ Y=0r
 W=13
 H=20
 AntiAlias=1
-LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "2.0" "#@#Global.inc"][!RefreshGroup Date]
+LeftMouseUpAction=[!WriteKeyValue Variables ScaleDate "2.0" "#@#Variables.inc"][!RefreshGroup Date]

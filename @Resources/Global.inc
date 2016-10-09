@@ -24,22 +24,18 @@ Information=Default values for every component
 License=Creative Commons BY-NC-SA 3.0
 Version=0.0.1
 
+@includeVariables=Variables.inc
+
 [Variables]
-BackgroundColor=249,38,114,40
-ForegroundColor=102,217,239
-ForegroundColorDimLight=166,226,46,180
-ForegroundColorDimMin=253,151,31,75
-
-;------------------------------------------------------------------------------
-; Scales
-
-ScaleClock=1
-ScaleDate=1
 
 ;------------------------------------------------------------------------------
 ; Colors
 
 ColorClear=0,0,0,0
+BackgroundColor=249,38,114,40
+ForegroundColor=102,217,239
+ForegroundColorDimLight=166,226,46,180
+ForegroundColorDimMin=253,151,31,75
 
 ;------------------------------------------------------------------------------
 ; Bar Styling
