@@ -46,6 +46,7 @@ function GenerateVariablesFile()
     variables:write("; Scales","\n\n")
     variables:write("ScaleClock=1","\n")
     variables:write("ScaleDate=1","\n")
+    variables:write("ScaleVolume=1","\n")
     variables:close()
 
     return true
@@ -64,6 +65,7 @@ function GenerateClocksFile()
     clocks:write("Information=Variables for the clocks","\n")
     clocks:write("License=Creative Commons BY-NC-SA 3.0","\n")
     clocks:write("Version=0.0.1","\n\n")
+    
     -- Content
     clocks:write("[Variables]","\n\n")
     clocks:write("; Clock1 variables","\n")
