@@ -1,3 +1,16 @@
+------- Metadata --------------------------------------------------------------
+-- Theming
+-- Author: Lucky Penny
+-- Description: Methods to simply the process of updating the preview of a
+--              theme and applying it to the whole skin.
+-- License: Creative Commons BY-NC-SA 3.0
+-- Version: 0.0.1
+--
+-- Preview(..) - Apply(..): As described.
+-- Initialize(): Generates the meters based on to the list of available themes. 
+-------------------------------------------------------------------------------
+
+
 -- Allows for preview of the theme
 function Preview(
                 BackgroundColor,

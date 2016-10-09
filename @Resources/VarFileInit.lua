@@ -1,3 +1,15 @@
+------- Metadata --------------------------------------------------------------
+-- Theming
+-- Author: Lucky Penny
+-- Description: Creates a Variables.inc file if it doesn't exist, with default
+--              values for every variable.
+-- License: Creative Commons BY-NC-SA 3.0
+-- Version: 0.0.1
+--
+-- Initialize(): As described
+-------------------------------------------------------------------------------
+
+
 -- Create the file for the variables unless it already exists
 function Initialize()
     -- generate the buttons for previewing and applying the theme

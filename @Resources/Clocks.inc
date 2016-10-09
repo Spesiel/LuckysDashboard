@@ -1,7 +1,7 @@
 [Metadata]
 Name=ClocksSettings
 Author=Lucky Penny
-Information=Variables values for the clocks
+Information=Variables for the clocks
 License=Creative Commons BY-NC-SA 3.0
 Version=0.0.1
 

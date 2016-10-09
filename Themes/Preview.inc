@@ -1,3 +1,10 @@
+[Metadata]
+Name=Preview
+Author=Lucky Penny
+Information=Displays the current desktop background a preview of themes
+License=Creative Commons BY-NC-SA 3.0
+Version=0.0.1
+
 [Preview_Hidden]
 Meter=Image
 PreserveAspectRatio=1
