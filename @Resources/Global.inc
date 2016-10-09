@@ -32,10 +32,6 @@ Version=0.0.1
 ; Colors
 
 ColorClear=0,0,0,0
-BackgroundColor=249,38,114,40
-ForegroundColor=102,217,239
-ForegroundColorDimLight=166,226,46,180
-ForegroundColorDimMin=253,151,31,75
 
 ;------------------------------------------------------------------------------
 ; Bar Styling

@@ -18,10 +18,10 @@ function Apply(
                 ForegroundColor,
                 ForegroundColorDimLight,
                 ForegroundColorDimMin)
-    SKIN:Bang('!WriteKeyValue Variables BackgroundColor '..BackgroundColor..' "#@#Global.inc"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColor '..ForegroundColor..' "#@#Global.inc"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimLight '..ForegroundColorDimLight..' "#@#Global.inc"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimMin '..ForegroundColorDimMin..' "#@#Global.inc"')
+    SKIN:Bang('!WriteKeyValue Variables BackgroundColor '..BackgroundColor..' "#@#Variables.inc"')
+    SKIN:Bang('!WriteKeyValue Variables ForegroundColor '..ForegroundColor..' "#@#Variables.inc"')
+    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimLight '..ForegroundColorDimLight..' "#@#Variables.inc"')
+    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimMin '..ForegroundColorDimMin..' "#@#Variables.inc"')
     SKIN:Bang('!RefreshApp')
 end
 
