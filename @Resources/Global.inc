@@ -45,12 +45,17 @@ Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
 
 
 ;------------------------------------------------------------------------------
-; Bar Styling
+; Measures Styling
 
 [BarStyle]
 BarOrientation=Horizontal
 BarColor=#ForegroundColor#
 SolidColor=#ForegroundColorDimMin#
+
+[RoundlineStyle]
+LineColor=#ForegroundColor#
+Solid=1
+AntiAlias=1
 
 ;------------------------------------------------------------------------------
 ; Text Styling
