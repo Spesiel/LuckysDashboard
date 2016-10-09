@@ -57,3 +57,21 @@ FontFace=Trebuchet MS
 FontSize=12
 AntiAlias=1
 ClipString=1
+
+;------------------------------------------------------------------------------
+;------------------------------------------------------------------------------
+; Clocks-specific constants
+
+; Transformation Matrix for ScaleClock
+Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
+
+; Skin sizing
+
+[SkinSizing]
+Meter=Image
+X=0
+Y=0
+W=(125*#ScaleClock#)
+H=(([MeterTimeSecondsBar:Y]+1+[MeterTimeSecondsBar:H]+5)*#ScaleClock#)
+DynamicVariables=1
+UpdateDivider=-1

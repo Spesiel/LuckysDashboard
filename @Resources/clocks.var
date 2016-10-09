@@ -7,9 +7,6 @@ Version=0.0.1
 
 [Variables]
 
-; Transformation Matrix for ScaleClock
-Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
-
 ; Clock1 variables
 Clock1_Label=PST
 Clock1_12or24=I
@@ -56,17 +53,3 @@ Clock4_12Select=253,151,31,75
 Clock4_24Select=0,0,0,0
 Clock4_DSTOnSelect=100,250,100
 Clock4_DSTOffSelect=253,151,31,75
-
-;------------------------------------------------------------------------------
-;------------------------------------------------------------------------------
-;------------------------------------------------------------------------------
-; Skin sizing
-
-[SkinSizing]
-Meter=Image
-X=0
-Y=0
-W=(125*#ScaleClock#)
-H=(([MeterTimeSecondsBar:Y]+1+[MeterTimeSecondsBar:H]+5)*#ScaleClock#)
-DynamicVariables=1
-UpdateDivider=-1
