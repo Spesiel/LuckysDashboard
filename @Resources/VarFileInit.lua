@@ -1,7 +1,7 @@
 ------- Metadata --------------------------------------------------------------
 -- Theming
 -- Author: Lucky Penny
--- Description: Creates a Variables.inc file if it doesn't exist, with default
+-- Description: Creates a variables.var file if it doesn't exist, with default
 --              values for every variable.
 -- License: Creative Commons BY-NC-SA 3.0
 -- Version: 0.0.1
@@ -13,9 +13,9 @@
 -- Create the file for the variables unless it already exists
 function Initialize()
     -- generate the buttons for previewing and applying the theme
-    local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'Variables.inc',"r")
+    local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'variables.var',"r")
     if testIfExist~=nil then io.close(testIfExist) return end
-    local variables = io.open(SKIN:ReplaceVariables("#@#")..'Variables.inc','w+')
+    local variables = io.open(SKIN:ReplaceVariables("#@#")..'variables.var','w+')
 
     variables:write("[Variables]","\n\n")
     variables:write(";------------------------------------------------------------------------------","\n")

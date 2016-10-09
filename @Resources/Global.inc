@@ -28,7 +28,7 @@ Version=0.0.1
 Measure=Script
 ScriptFile=#@#\VarFileInit.lua
 
-@includeVariables=Variables.inc
+@includeVariables=variables.var
 
 [Variables]
 
