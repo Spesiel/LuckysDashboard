@@ -38,6 +38,13 @@ ScriptFile=#@#\VarFileInit.lua
 ColorClear=0,0,0,0
 
 ;------------------------------------------------------------------------------
+; Clocks-specific constants
+
+; Transformation Matrix for ScaleClock
+Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
+
+
+;------------------------------------------------------------------------------
 ; Bar Styling
 
 [BarStyle]
@@ -61,9 +68,6 @@ ClipString=1
 ;------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
 ; Clocks-specific constants
-
-; Transformation Matrix for ScaleClock
-Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
 
 ; Skin sizing
 
