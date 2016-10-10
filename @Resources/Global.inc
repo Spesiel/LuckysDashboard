@@ -11,7 +11,7 @@ ContextTitle=Configure Scale settings
 ContextAction=[!ActivateConfig "#RootConfig#\ScaleSettings" "ScaleSettings.ini"]
 ContextTitle2=Configure Themes
 ContextAction2=[!ActivateConfig "#RootConfig#\Themes" "Themes.ini"]
-ContextTitle3=------------------
+ContextTitle3=-
 ContextTitle4=Refresh All
 ContextAction4=[!RefreshApp]
 
@@ -51,11 +51,6 @@ Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
 BarOrientation=Horizontal
 BarColor=#ForegroundColor#
 SolidColor=#ForegroundColorDimMin#
-
-[RoundlineStyle]
-LineColor=#ForegroundColor#
-Solid=1
-AntiAlias=1
 
 ;------------------------------------------------------------------------------
 ; Text Styling

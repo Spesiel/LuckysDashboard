@@ -28,6 +28,6 @@ X=0
 Y=0
 W=[SkinSizing:W]
 H=([Title:H]+15)
-SolidColor=#BackgroundColor#,150
+SolidColor=#BackgroundColor#
 DynamicVariables=1
 UpdateDivider=-1
