@@ -51,7 +51,13 @@ function WriteIni(inputtable, filename)
         if section ~= "Metadata" then
             file:write(("[%s]"):format(section),"\n")
             for key, value in pairs(contents) do
-                file:write(("%s=%s"):format(key, value),"\n")
+				-- It's a comment
+				if string.sub(key,1,1)==";" then
+					file:write(("%s"):format(value),"\n")
+				-- It's data
+                else
+					file:write(("%s=%s"):format(key,value),"\n")
+				end
             end
             file:write("\n")
         end

@@ -1,3 +1,5 @@
-Themes/generated.inc
 @Resources/variables.var
 @Resources/clocks.var
+@Resources/disks.var
+Disks/Config/generated.inc
+Themes/generated.inc
