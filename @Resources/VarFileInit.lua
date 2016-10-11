@@ -18,17 +18,18 @@ function Initialize()
     -- disks.var
     local doRefreshForDisks = GenerateDisksFile()
     
-    if doRefreshForVariables or doRefreshForClocks then SKIN:Bang('!Refresh') end
+    if doRefreshForVariables or doRefreshForClocks or doRefreshForDisks then SKIN:Bang('!Refresh') end
 end
 
 -- variables.var
 function GenerateVariablesFile()
+    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."variables.var","r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local variables = io.open(SKIN:ReplaceVariables("#@#").."variables.var","w+")
 
     local variables = {}
-    variables["Metadata"] = GenerateMetadata("Variables","Lucky Penny","Variables for the whole skin",0.0.1)
+    variables["Metadata"] = GenerateMetadata("Variables","Lucky Penny","Variables for the whole skin","0.0.1")
 
     local content = {}
     content[";1"]="\n;------------------------------------------------------------------------------"
@@ -52,12 +53,13 @@ end
 
 -- clocks.var
 function GenerateClocksFile()
+    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."clocks.var","r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local clocks = io.open(SKIN:ReplaceVariables("#@#").."clocks.var","w+")
 
     local clocks = {}
-    clocks["Metadata"] = GenerateMetadata("ClocksSettings","Lucky Penny","Variables for the clocks",0.0.1)
+    clocks["Metadata"] = GenerateMetadata("ClocksSettings","Lucky Penny","Variables for the clocks","0.0.1")
 
     local content = {}
 
@@ -133,15 +135,30 @@ end
 
 -- disks.var
 function GenerateDisksFile()
+    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'disks.var',"r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local disks = {}
-    disks["Metadata"] = GenerateMetadata("DisksSettings","Lucky Penny","Variables for the disks",0.0.1)
+    disks["Metadata"] = GenerateMetadata("DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
 
     local variables = {}
     variables[";1"]="\n;------------------------------------------------------------------------------"
     variables[";2"]="; Disks common variables\n"
     variables["DisksTotal"]=1
+    
+    variables[";3"] = "\n; Disk1"
+    variables["Disk1Letter"]= "C"
+    variables["Disk1ShowTemperature"] = "1"
+    variables["Disk1SmartSensorId"] = "0xf0000100"
+    variables["Disk1SmartInstance"] = "0x0"
+    variables["Disk1SmartTemperatureId"] = "0x1000000"
+    variables["Disk1ActivitySensorId"] = "0xf0000101"
+    variables["Disk1ActivityInstance"] = "0x0"
+    variables["Disk1ActivityReadPercentId"] = "0x7000000"
+    variables["Disk1ActivityWritePercentId"] = "0x7000001"
+    variables["Disk1ActivityReadRateId"] = "0x8000000"
+    variables["Disk1ActivityWriteRateId"] = "0x8000001"
+
     disks["Variables"] = variables
 
     WriteIni(disks,SKIN:ReplaceVariables("#@#").."disks.var")

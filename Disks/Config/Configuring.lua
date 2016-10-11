@@ -23,22 +23,36 @@ function Initialize()
     
 
     -- loop through the data for each disk
-    for loop=1,SKIN:GetVariable("DisksTotal"),1 do
+    for loop=1,variables.Variables.DisksTotal,1 do
+        local currentDisk = ("Disk%s"):format(loop)
         -- the disk we are looking at already exists
-        if generated[("Disk%s"):format(loop)] ~= nil then
-
+        if generated[currentDisk] ~= nil then
         -- the disk we are looking at doesn't exist yet
         else
+            local currentDisk = ("Disk%s"):format(loop)
+
             -- adding the base data to it
-            local addition = {}
-            --addition[""]
-            generated[("Disk%s"):format(loop)] = addition
+            variables.Variables[";"..currentDisk] = ("\n; %s"):format(currentDisk)
+            variables.Variables[currentDisk.."Letter"] = "C"
+            variables.Variables[currentDisk.."ShowTemperature"] = "1"
+            variables.Variables[currentDisk.."SmartSensorId"] = "0xf0000100"
+            variables.Variables[currentDisk.."SmartInstance"] = "0x0"
+            variables.Variables[currentDisk.."SmartTemperatureId"] = "0x1000000"
+            variables.Variables[currentDisk.."ActivitySensorId"] = "0xf0000101"
+            variables.Variables[currentDisk.."ActivityInstance"] = "0x0"
+            variables.Variables[currentDisk.."ActivityReadPercentId"] = "0x7000000"
+            variables.Variables[currentDisk.."ActivityWritePercentId"] = "0x7000001"
+            variables.Variables[currentDisk.."ActivityReadRateId"] = "0x8000000"
+            variables.Variables[currentDisk.."ActivityWriteRateId"] = "0x8000001"
+
+            local content = {}
+            generated[currentDisk] = content
         end
     end
 
     -- Writes the values to files
-    WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
-    WriteIni(generated,SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    --WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
+    --WriteIni(generated,SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
     SKIN:Bang('!Updategroup Disks')
 end
