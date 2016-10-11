@@ -40,71 +40,48 @@ end
 
 -- Load all schemes from file
 function Initialize()
+    -- Loads the Read and Write methods for ini files
+    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+
     -- load ini file
 	local file = assert(io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt','r'), 'Unable to open ColorSchemes.txt')
-	local iniFile, section = {}
-	local num = 0
-	for line in file:lines() do
-		num = num + 1
-		if not line:match('^%s-;') then
-			local key, command = line:match('^([^=]+)=(.+)')
-			if line:match('^%s-%[.+') then
-				section = line:match('^%s-%[([^%]]+)'):lower()
-				if not iniFile[section] then iniFile[section] = {} end
-			elseif key and command and section then
-				iniFile[section][key:lower():match('^s*(%S*)%s*$')] = command:match('^s*(.-)%s*$')
-			elseif #line > 0 and section and not key or command then
-				print(num .. ': Invalid property or value.')
-			end
-		end
-	end
-	if not section then print('No sections found in ColorSchemes.txt') end
-	file:close()
+	local iniFile = ReadIni(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt')
 	
     -- generate the buttons for previewing and applying the theme
     local doRefresh = false
-    local testIfExist=io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'generated.inc',"r")
-    if testIfExist~=nil then io.close(testIfExist) doRefresh = false else doRefresh = true end
-    local generated = io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'generated.inc','w+')
 
     -- loop through the different color schemes (themes) in the txt file
     local currentTheme = 0
     local currentLineLength = 0
+    local generated = {}
     for title,pair in pairs(iniFile) do
         currentTheme = currentTheme + 1
-        generated:write(string.gsub("[Theme_#TITLE#]","#TITLE#",title),"\n")
-        generated:write("Meter=String","\n")
-        generated:write("MeterStyle=TextStyle","\n")
-        generated:write("Padding=10,10,10,10","\n")
-        generated:write("FontSize=10","\n")
 
-        currentLineLength = currentLineLength + 10*(string.len(pair.name))
+        local addition = {}
+        addition["Meter"]="String"
+        addition["MeterStyle"]="TextStyle"
+        addition["Padding"]="10,10,10,10"
+        addition["FontSize"]=10
+
+        currentLineLength = currentLineLength + 10*(string.len(pair.Name))
         if currentTheme>1 and currentLineLength<760 then
-            generated:write("X=10R","\n")
-            generated:write("Y=r","\n")
+            addition["X"]="10R"
+            addition["Y"]="r"
         else
-            currentLineLength = 30 + 10*(string.len(pair.name))
-            generated:write("X=20","\n")
-            generated:write("Y=10R","\n")
+            currentLineLength = 30 + 10*(string.len(pair.Name))
+            addition["X"]="20"
+            addition["Y"]="10R"
         end
 
-        generated:write(string.gsub("SolidColor=#BGC#","#BGC#",pair.backgroundcolor),"\n")
-        generated:write(string.gsub("FontColor=#FGC#","#FGC#",pair.foregroundcolor),"\n")
-        generated:write(string.gsub("Text=#NAME#","#NAME#",pair.name),"\n")
-        prev = "MouseOverAction=!CommandMeasure Theming \"Preview('#BGC#','#FGC#','#FGCDL#','#FGCDM#')\""
-        prev = prev:gsub("#BGC#",pair.backgroundcolor)
-        prev = prev:gsub("#FGC#",pair.foregroundcolor)
-        prev = prev:gsub("#FGCDL#",pair.foregroundcolordimlight)
-        prev = prev:gsub("#FGCDM#",pair.foregroundcolordimmin)
-        generated:write(prev,"\n")
-        apply = "LeftMouseUpAction=!CommandMeasure Theming \"Apply('#BGC#','#FGC#','#FGCDL#','#FGCDM#')\""
-        apply = apply:gsub("#BGC#",pair.backgroundcolor)
-        apply = apply:gsub("#FGC#",pair.foregroundcolor)
-        apply = apply:gsub("#FGCDL#",pair.foregroundcolordimlight)
-        apply = apply:gsub("#FGCDM#",pair.foregroundcolordimmin)
-        generated:write(apply,"\n\n")
+        addition["SolidColor"]=pair.BackgroundColor
+        addition["FontColor"]=pair.ForegroundColor
+        addition["Text"]=pair.Name
+        addition["MouseOverAction"]=("!CommandMeasure Theming \"Preview('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
+        addition["LeftMouseUpAction"]=("!CommandMeasure Theming \"Apply('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
+
+        generated[("Theme_%s"):format(title)] = addition
     end
-    generated:close()
+    WriteIni(generated,SKIN:ReplaceVariables("#CURRENTPATH#").."generated.inc")
 
     if doRefresh then
         SKIN:Bang('!Refresh')

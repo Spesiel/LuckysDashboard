@@ -1,8 +1,7 @@
 ------- Metadata --------------------------------------------------------------
 -- Theming
 -- Author: Lucky Penny
--- Description: Creates a variables.var file if it doesn't exist, with default
---              values for every variable.
+-- Description: Creates all variables files with default values.
 -- License: Creative Commons BY-NC-SA 3.0
 -- Version: 0.0.1
 --
@@ -16,6 +15,8 @@ function Initialize()
     local doRefreshForVariables = GenerateVariablesFile()
     -- clocks.var
     local doRefreshForClocks = GenerateClocksFile()
+    -- disks.var
+    local doRefreshForDisks = GenerateDisksFile()
     
     if doRefreshForVariables or doRefreshForClocks then SKIN:Bang('!Refresh') end
 end
@@ -47,6 +48,7 @@ function GenerateVariablesFile()
     variables:write("ScaleClock=1","\n")
     variables:write("ScaleDate=1","\n")
     variables:write("ScaleVolume=1","\n")
+    variables:write("ScaleDisks=1","\n")
     variables:close()
 
     return true
@@ -132,6 +134,30 @@ function GenerateClocksFile()
     clocks:write("DateAndClock4_DateRight=#ColorClear#","\n")
 
     clocks:close()
+
+    return true
+end
+
+-- disks.var
+function GenerateDisksFile()
+    local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'disks.var',"r")
+    if testIfExist~=nil then io.close(testIfExist) return false end
+    local disks = io.open(SKIN:ReplaceVariables("#@#")..'disks.var','w+')
+
+    -- Header
+    disks:write("[Metadata]","\n")
+    disks:write("Name=DisksSettings","\n")
+    disks:write("Author=Lucky Penny","\n")
+    disks:write("Information=Variables for the disks","\n")
+    disks:write("License=Creative Commons BY-NC-SA 3.0","\n")
+    disks:write("Version=0.0.1","\n\n")
+
+    -- Content
+    disks:write("[Variables]","\n\n")
+    disks:write(";------------------------------------------------------------------------------","\n")
+    disks:write("; Disks common variables","\n\n")
+    disks:write("DisksTotal=1","\n")
+    disks:close()
 
     return true
 end
