@@ -35,15 +35,20 @@ function Initialize()
             variables.Variables[";"..currentDisk] = ("\n; %s"):format(currentDisk)
             variables.Variables[currentDisk.."Letter"] = "C"
             variables.Variables[currentDisk.."ShowTemperature"] = "1"
+            variables.Variables[currentDisk.."SmartOnSelect"] = "100,250,100"
+            variables.Variables[currentDisk.."SmartOffSelect"] = "#BackgroundColorDimMin#"
             variables.Variables[currentDisk.."SmartSensorId"] = "0xf0000100"
             variables.Variables[currentDisk.."SmartInstance"] = "0x0"
             variables.Variables[currentDisk.."SmartTemperatureId"] = "0x1000000"
+            variables.Variables[currentDisk.."ShowActivity"] = "1"
             variables.Variables[currentDisk.."ActivitySensorId"] = "0xf0000101"
             variables.Variables[currentDisk.."ActivityInstance"] = "0x0"
             variables.Variables[currentDisk.."ActivityReadPercentId"] = "0x7000000"
             variables.Variables[currentDisk.."ActivityWritePercentId"] = "0x7000001"
             variables.Variables[currentDisk.."ActivityReadRateId"] = "0x8000000"
             variables.Variables[currentDisk.."ActivityWriteRateId"] = "0x8000001"
+            variables.Variables[currentDisk.."ActivityOnSelect"] = "100,250,100"
+            variables.Variables[currentDisk.."ActivityOffSelect"] = "#BackgroundColorDimMin#"
 
             local content = {}
             generated[currentDisk] = content

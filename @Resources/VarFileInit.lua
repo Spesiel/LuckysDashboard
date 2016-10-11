@@ -152,12 +152,17 @@ function GenerateDisksFile()
     variables["Disk1SmartSensorId"] = "0xf0000100"
     variables["Disk1SmartInstance"] = "0x0"
     variables["Disk1SmartTemperatureId"] = "0x1000000"
+    variables["Disk1SmartOnSelect"] = "100,250,100"
+    variables["Disk1SmartOffSelect"] = "#BackgroundColorDimMin#"
+    variables["Disk1ShowActivity"] = "1"
     variables["Disk1ActivitySensorId"] = "0xf0000101"
     variables["Disk1ActivityInstance"] = "0x0"
     variables["Disk1ActivityReadPercentId"] = "0x7000000"
     variables["Disk1ActivityWritePercentId"] = "0x7000001"
     variables["Disk1ActivityReadRateId"] = "0x8000000"
     variables["Disk1ActivityWriteRateId"] = "0x8000001"
+    variables["Disk1ActivityOnSelect"] = "100,250,100"
+    variables["Disk1ActivityOffSelect"] = "#BackgroundColorDimMin#"
 
     disks["Variables"] = variables
 

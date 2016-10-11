@@ -10,9 +10,8 @@ Y=[Disk1LetterInput:Y]
 W=[Disk1LetterInput:W]
 H=[Disk1LetterInput:H]
 DefaultValue=#Disk1Letter#
-Command1=!WriteKeyValue Variables Disk1Letter "$UserInput$" "#@#globalsettings.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1Letter "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1SmartSensorIdInputMeasure]
 Measure=Plugin
@@ -26,9 +25,8 @@ Y=[Disk1SmartSensorInstanceInput:Y]
 W=[Disk1SmartSensorInstanceInput:W]
 H=[Disk1SmartSensorInstanceInput:H]
 DefaultValue=#Disk1SmartSensorId#
-Command1=!WriteKeyValue Variables Disk1SmartSensorId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1SmartSensorId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1SmartInstanceInputMeasure]
 Measure=Plugin
@@ -42,9 +40,8 @@ Y=[Disk1SmartTemperatureIdInput:Y]
 W=[Disk1SmartTemperatureIdInput:W]
 H=[Disk1SmartTemperatureIdInput:H]
 DefaultValue=#SmartInstance#
-Command1=!WriteKeyValue Variables SmartInstance "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables SmartInstance "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1SmartTemperatureIdInputMeasure]
 Measure=Plugin
@@ -58,11 +55,10 @@ Y=[Disk1SmartSensorIdInput:Y]
 W=[Disk1SmartSensorIdInput:W]
 H=[Disk1SmartSensorIdInput:H]
 DefaultValue=#Disk1SmartTemperatureId#
-Command1=!WriteKeyValue Variables Disk1SmartTemperatureId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1SmartTemperatureId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
-;---------------------------------------
+;------------------------------------------------------------------------------
 
 [Disk1Title]
 Meter=String
@@ -113,23 +109,23 @@ AntiAlias=1
 Text=SMART
 UpdateDivider=-1
 
-[meterSelect1tempOn]
+[Disk1ShowTemperatureOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
-SolidColor=#DiskColor1tempOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables 1_DriveTempOnOff "0" "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOnSelect #colorGreen# "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOffSelect #colorWhiteDimMin# "#@#globalsettings.inc"][!Refresh #CURRENTCONFIG#][!Refresh #Disk1SkinLoc#]
+SolidColor=#Disk1SmartOnSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables Disk1ShowTemperature "1" "#@#disks.var"][!WriteKeyValue Variables Disk1SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables Disk1SmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[meterSelect1tempOff]
+[Disk1ShowTemperatureOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
-SolidColor=#DiskColor1tempOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables 1_DriveTempOnOff "1" "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOffSelect #colorRed# "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOnSelect #colorWhiteDimMin# "#@#globalsettings.inc"][!Refresh #CURRENTCONFIG#][!Refresh #Disk1SkinLoc#]
+SolidColor=#Disk1SmartOffSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables Disk1ShowTemperature "0" "#@#disks.var"][!WriteKeyValue Variables Disk1SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables Disk1SmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
 [Disk1SmartSensorIdInput]
 Meter=String
@@ -182,9 +178,8 @@ Y=[Disk1ActivitySensorInstanceInput:Y]
 W=[Disk1ActivitySensorInstanceInput:W]
 H=[Disk1ActivitySensorInstanceInput:H]
 DefaultValue=#Disk1ActivitySensorId#
-Command1=!WriteKeyValue Variables Disk1ActivitySensorId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1ActivitySensorId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1ActivityInstanceInputMeasure]
 Measure=Plugin
@@ -198,9 +193,8 @@ Y=[Disk1ActivityTemperatureIdInput:Y]
 W=[Disk1ActivityTemperatureIdInput:W]
 H=[Disk1ActivityTemperatureIdInput:H]
 DefaultValue=#ActivityInstance#
-Command1=!WriteKeyValue Variables ActivityInstance "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables ActivityInstance "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1ActivityReadPercentIdInputMeasure]
 Measure=Plugin
@@ -214,9 +208,8 @@ Y=[Disk1SmartSensorIdInput:Y]
 W=[Disk1SmartSensorIdInput:W]
 H=[Disk1SmartSensorIdInput:H]
 DefaultValue=#Disk1ActivityReadPercentId#
-Command1=!WriteKeyValue Variables Disk1ActivityReadPercentId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1ActivityReadPercentId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1ActivityWritePercentIdInputMeasure]
 Measure=Plugin
@@ -230,9 +223,8 @@ Y=[Disk1SmartSensorIdInput:Y]
 W=[Disk1SmartSensorIdInput:W]
 H=[Disk1SmartSensorIdInput:H]
 DefaultValue=#Disk1ActivityWritePercentId#
-Command1=!WriteKeyValue Variables Disk1ActivityWritePercentId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1ActivityWritePercentId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1ActivityReadRateIdInputMeasure]
 Measure=Plugin
@@ -246,9 +238,8 @@ Y=[Disk1SmartSensorIdInput:Y]
 W=[Disk1SmartSensorIdInput:W]
 H=[Disk1SmartSensorIdInput:H]
 DefaultValue=#Disk1ActivityReadRateId#
-Command1=!WriteKeyValue Variables Disk1ActivityReadRateId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1ActivityReadRateId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
 [Disk1ActivityWriteRateIdInputMeasure]
 Measure=Plugin
@@ -262,11 +253,11 @@ Y=[Disk1SmartSensorIdInput:Y]
 W=[Disk1SmartSensorIdInput:W]
 H=[Disk1SmartSensorIdInput:H]
 DefaultValue=#Disk1ActivityWriteRateId#
-Command1=!WriteKeyValue Variables Disk1ActivityWriteRateId "$UserInput$" "#@#HWiNFO.inc"
-Command2=!Refresh #CURRENTCONFIG#
-Command3=!Refresh #Disk1SkinLoc#
+Command1=!WriteKeyValue Variables Disk1ActivityWriteRateId "$UserInput$" "#@#disks.var"
+Command2=!RefreshGroup Disks
 
-;---------------------------------------
+;------------------------------------------------------------------------------
+;------------------------------------------------------------------------------
 
 [Disk1ActivityLabel]
 Meter=String
@@ -280,23 +271,23 @@ AntiAlias=1
 Text=Activity
 UpdateDivider=-1
 
-[meterSelect1activityOn]
+[Disk1ShowActivityOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
-SolidColor=#DiskColor1tempOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables 1_DriveTempOnOff "0" "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOnSelect #colorGreen# "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOffSelect #colorWhiteDimMin# "#@#globalsettings.inc"][!Refresh #CURRENTCONFIG#][!Refresh #Disk1SkinLoc#]
+SolidColor=#Disk1ActivityOnSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables Disk1ShowActivity "1" "#@#disks.var"][!WriteKeyValue Variables Disk1ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables Disk1ActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[meterSelect1activityOff]
+[Disk1ShowActivityOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
-SolidColor=#DiskColor1tempOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables 1_DriveTempOnOff "1" "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOffSelect #colorRed# "#@#globalsettings.inc"][!WriteKeyValue Variables DiskColor1tempOnSelect #colorWhiteDimMin# "#@#globalsettings.inc"][!Refresh #CURRENTCONFIG#][!Refresh #Disk1SkinLoc#]
+SolidColor=#Disk1ActivityOffSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables Disk1ShowActivity "0" "#@#disks.var"][!WriteKeyValue Variables Disk1ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables Disk1ActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
 [Disk1ActivitySensorIdInput]
 Meter=String
