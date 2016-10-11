@@ -20,6 +20,9 @@ function Initialize()
     if testIfExist~=nil then io.close(testIfExist) variables = ReadIni(SKIN:ReplaceVariables("#@#").."disks.var") end
     testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
     if testIfExist~=nil then io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc") end
+    local refreshGenerated = false
+    local template = {}
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."DiskTemplate.inc")
     
 
     -- loop through the data for each disk
@@ -51,13 +54,19 @@ function Initialize()
             variables.Variables[currentDisk.."ActivityOffSelect"] = "#BackgroundColorDimMin#"
 
             local content = {}
+            for line in lines(template) do
+                content.insert((line):format(currentDisk))
+            end
             generated[currentDisk] = content
+            refreshGenerated = true
         end
     end
 
     -- Writes the values to files
-    --WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
-    --WriteIni(generated,SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    if refreshGenerated then
+        WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
+        WriteIni(generated,SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    end
 
     SKIN:Bang('!Updategroup Disks')
 end

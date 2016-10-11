@@ -7,6 +7,7 @@
 --
 -- ReadIni(inputfile): Reads an ini file and returns it as a table.
 -- WriteIni(inputtable,filename): Writes the ini data to file.
+-- ReadFile(FilePath): Reads a file as it is and returns it as a table.
 -------------------------------------------------------------------------------
 
 
@@ -64,4 +65,23 @@ function WriteIni(inputtable, filename)
 	end
 
 	file:close()
+end
+
+function ReadFile(FilePath)
+	-- OPEN FILE.
+	local File = io.open(FilePath)
+
+	-- HANDLE ERROR OPENING FILE.
+	if not File then
+		print('ReadFile: unable to open file at ' .. FilePath)
+		return
+	end
+
+	-- READ FILE CONTENTS AND CLOSE.
+	local Contents = {}
+	for Line in File:lines() do
+		table.insert(Contents, Line)
+	end
+
+	return Contents
 end
