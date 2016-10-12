@@ -116,7 +116,26 @@ Hidden=#|HideTemperature#
 ;------------------------------------------------------------------------------
 ; Activity display
 
-[|ActivityReadMeasureValue]
+[|ActivityReadRateMeasure]
+Measure=Plugin
+Plugin=PerfMon
+PerfMonObject=LogicalDisk
+PerfMonCounter=Disk Read Bytes/sec
+PerfMonInstance=#|Letter#:
+
+[|ActivityReadRateLabel]
+Meter=String
+MeterStyle=TextStyle
+FontSize=7
+MeasureName=|ActivityReadRateMeasure
+X=73
+Y=([|Title:Y]+4)
+Text=%1Bps
+AutoScale=1
+TransformationMatrix=#Scaling#
+Hidden=#|HideActivity#
+
+[|ActivityReadPercentMeasureValue]
 Measure=Plugin
 Plugin=HWiNFO.dll
 HWiNFOSensorId=#|ActivitySensorId#
@@ -126,10 +145,10 @@ HWiNFOType=CurrentValue
 DynamicVariables=1
 Disabled=#|HideActivity#
 
-[|ActivityReadHistogram]
+[|ActivityReadPercentHistogram]
 Meter=Histogram
 MeterStyle=HistogramStyle
-MeasureName=|ActivityReadMeasureValue
+MeasureName=|ActivityReadPercentMeasureValue
 X=73
 Y=([|Title:Y]+4)
 W=171
@@ -137,7 +156,28 @@ H=19
 TransformationMatrix=#Scaling#
 Hidden=#|HideActivity#
 
-[|ActivityWriteMeasureValue]
+[|ActivityWriteRateMeasure]
+Measure=Plugin
+Plugin=PerfMon
+PerfMonObject=LogicalDisk
+PerfMonCounter=Disk Write Bytes/sec
+PerfMonInstance=#|Letter#:
+
+[|ActivityWriteRateLabel]
+Meter=String
+MeterStyle=TextStyle
+FontSize=7
+MeasureName=|ActivityWriteRateMeasure
+X=73
+Y=([|UsedBar:Y]+10)
+W=171
+H=19
+Text=%1Bps
+AutoScale=1
+TransformationMatrix=#Scaling#
+Hidden=#|HideActivity#
+
+[|ActivityWritePercentMeasureValue]
 Measure=Plugin
 Plugin=HWiNFO.dll
 HWiNFOSensorId=#|ActivitySensorId#
@@ -147,11 +187,11 @@ HWiNFOType=CurrentValue
 DynamicVariables=1
 Disabled=#|HideActivity#
 
-[|ActivityWriteHistogram]
+[|ActivityWritePercentHistogram]
 Meter=Histogram
 MeterStyle=HistogramStyle
 Flip=1
-MeasureName=|ActivityWriteMeasureValue
+MeasureName=|ActivityWritePercentMeasureValue
 X=73
 Y=([|UsedBar:Y]+4)
 W=171
@@ -162,7 +202,7 @@ Hidden=#|HideActivity#
 [|Dummy]
 Meter=Image
 X=3
-Y=([|TemperatureLabel:H]>[|ActivityWriteHistogram:H]?[|Title:Y]+30:[|UsedBar:Y]+4)
+Y=([|TemperatureLabel:H]>[|ActivityWritePercentHistogram:H]?[|Title:Y]+30:[|UsedBar:Y]+4)
 W=30
-H=([|TemperatureLabel:H]>[|ActivityWriteHistogram:H]?[|TemperatureLabel:H]:[|ActivityWriteHistogram:H])
+H=([|TemperatureLabel:H]>[|ActivityWritePercentHistogram:H]?[|TemperatureLabel:H]:[|ActivityWritePercentHistogram:H])
 TransformationMatrix=#Scaling#
