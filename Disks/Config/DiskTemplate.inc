@@ -1,66 +1,66 @@
-[%sLetterInputMeasure]
+[?LetterInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sLetterInput:X]
-Y=[%sLetterInput:Y]
-W=[%sLetterInput:W]
-H=[%sLetterInput:H]
-DefaultValue=#%sLetter#
-Command1=!WriteKeyValue Variables %sLetter "$UserInput$" "#@#disks.var"
+X=[?LetterInput:X]
+Y=[?LetterInput:Y]
+W=[?LetterInput:W]
+H=[?LetterInput:H]
+DefaultValue=#?Letter#
+Command1=!WriteKeyValue Variables ?Letter "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sSmartSensorIdInputMeasure]
+[?SmartSensorIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorInstanceInput:X]
-Y=[%sSmartSensorInstanceInput:Y]
-W=[%sSmartSensorInstanceInput:W]
-H=[%sSmartSensorInstanceInput:H]
-DefaultValue=#%sSmartSensorId#
-Command1=!WriteKeyValue Variables %sSmartSensorId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorInstanceInput:X]
+Y=[?SmartSensorInstanceInput:Y]
+W=[?SmartSensorInstanceInput:W]
+H=[?SmartSensorInstanceInput:H]
+DefaultValue=#?SmartSensorId#
+Command1=!WriteKeyValue Variables ?SmartSensorId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sSmartInstanceInputMeasure]
+[?SmartInstanceInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartTemperatureIdInput:X]
-Y=[%sSmartTemperatureIdInput:Y]
-W=[%sSmartTemperatureIdInput:W]
-H=[%sSmartTemperatureIdInput:H]
+X=[?SmartTemperatureIdInput:X]
+Y=[?SmartTemperatureIdInput:Y]
+W=[?SmartTemperatureIdInput:W]
+H=[?SmartTemperatureIdInput:H]
 DefaultValue=#SmartInstance#
 Command1=!WriteKeyValue Variables SmartInstance "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sSmartTemperatureIdInputMeasure]
+[?SmartTemperatureIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorIdInput:X]
-Y=[%sSmartSensorIdInput:Y]
-W=[%sSmartSensorIdInput:W]
-H=[%sSmartSensorIdInput:H]
-DefaultValue=#%sSmartTemperatureId#
-Command1=!WriteKeyValue Variables %sSmartTemperatureId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorIdInput:X]
+Y=[?SmartSensorIdInput:Y]
+W=[?SmartSensorIdInput:W]
+H=[?SmartSensorIdInput:H]
+DefaultValue=#?SmartTemperatureId#
+Command1=!WriteKeyValue Variables ?SmartTemperatureId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
 ;------------------------------------------------------------------------------
 
-[%sTitle]
+[?Title]
 Meter=String
 X=10
 Y=21r
@@ -69,10 +69,10 @@ H=20
 FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
-Text=%s
+Text=?
 UpdateDivider=-1
 
-[%sLetterInput]
+[?LetterInput]
 Meter=String
 X=55
 Y=0r
@@ -82,10 +82,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sLetter#
-LeftMouseUpAction=!CommandMeasure "%sLetterInputMeasure" "ExecuteBatch 1-3"
+Text=#?Letter#
+LeftMouseUpAction=!CommandMeasure "?LetterInputMeasure" "ExecuteBatch 1-3"
 
-[%sLetterSemicolon]
+[?LetterSemicolon]
 Meter=String
 X=75
 Y=0r
@@ -97,7 +97,7 @@ AntiAlias=1
 Text=:
 UpdateDivider=-1
 
-[%sSmartLabel]
+[?SmartLabel]
 Meter=String
 X=85
 Y=1r
@@ -109,25 +109,25 @@ AntiAlias=1
 Text=SMART
 UpdateDivider=-1
 
-[%sShowTemperatureOn]
+[?ShowTemperatureOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
-SolidColor=#%sSmartOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables %sShowTemperature "1" "#@#disks.var"][!WriteKeyValue Variables %sSmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables %sSmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+SolidColor=#?SmartOnSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables ?ShowTemperature "1" "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[%sShowTemperatureOff]
+[?ShowTemperatureOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
-SolidColor=#%sSmartOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables %sShowTemperature "0" "#@#disks.var"][!WriteKeyValue Variables %sSmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables %sSmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+SolidColor=#?SmartOffSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables ?ShowTemperature "0" "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[%sSmartSensorIdInput]
+[?SmartSensorIdInput]
 Meter=String
 X=190
 Y=-1r
@@ -137,10 +137,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sSmartSensorId#
-LeftMouseUpAction=!CommandMeasure "%sSmartTemperatureIdInputMeasure" "ExecuteBatch 1-3"
+Text=#?SmartSensorId#
+LeftMouseUpAction=!CommandMeasure "?SmartTemperatureIdInputMeasure" "ExecuteBatch 1-3"
 
-[%sSmartSensorInstanceInput]
+[?SmartSensorInstanceInput]
 Meter=String
 X=287
 Y=0r
@@ -150,10 +150,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sSmartInstance#
-LeftMouseUpAction=!CommandMeasure "%sSmartSensorIdInputMeasure" "ExecuteBatch 1-3"
+Text=#?SmartInstance#
+LeftMouseUpAction=!CommandMeasure "?SmartSensorIdInputMeasure" "ExecuteBatch 1-3"
 
-[%sSmartTemperatureIdInput]
+[?SmartTemperatureIdInput]
 Meter=String
 X=324
 Y=0r
@@ -163,103 +163,103 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sSmartTemperatureId#
-LeftMouseUpAction=!CommandMeasure "%sSmartInstanceInputMeasure" "ExecuteBatch 1-3"
+Text=#?SmartTemperatureId#
+LeftMouseUpAction=!CommandMeasure "?SmartInstanceInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivitySensorIdInputMeasure]
+[?ActivitySensorIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sActivitySensorInstanceInput:X]
-Y=[%sActivitySensorInstanceInput:Y]
-W=[%sActivitySensorInstanceInput:W]
-H=[%sActivitySensorInstanceInput:H]
-DefaultValue=#%sActivitySensorId#
-Command1=!WriteKeyValue Variables %sActivitySensorId "$UserInput$" "#@#disks.var"
+X=[?ActivitySensorInstanceInput:X]
+Y=[?ActivitySensorInstanceInput:Y]
+W=[?ActivitySensorInstanceInput:W]
+H=[?ActivitySensorInstanceInput:H]
+DefaultValue=#?ActivitySensorId#
+Command1=!WriteKeyValue Variables ?ActivitySensorId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sActivityInstanceInputMeasure]
+[?ActivityInstanceInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sActivityTemperatureIdInput:X]
-Y=[%sActivityTemperatureIdInput:Y]
-W=[%sActivityTemperatureIdInput:W]
-H=[%sActivityTemperatureIdInput:H]
+X=[?ActivityTemperatureIdInput:X]
+Y=[?ActivityTemperatureIdInput:Y]
+W=[?ActivityTemperatureIdInput:W]
+H=[?ActivityTemperatureIdInput:H]
 DefaultValue=#ActivityInstance#
 Command1=!WriteKeyValue Variables ActivityInstance "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sActivityReadPercentIdInputMeasure]
+[?ActivityReadPercentIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorIdInput:X]
-Y=[%sSmartSensorIdInput:Y]
-W=[%sSmartSensorIdInput:W]
-H=[%sSmartSensorIdInput:H]
-DefaultValue=#%sActivityReadPercentId#
-Command1=!WriteKeyValue Variables %sActivityReadPercentId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorIdInput:X]
+Y=[?SmartSensorIdInput:Y]
+W=[?SmartSensorIdInput:W]
+H=[?SmartSensorIdInput:H]
+DefaultValue=#?ActivityReadPercentId#
+Command1=!WriteKeyValue Variables ?ActivityReadPercentId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sActivityWritePercentIdInputMeasure]
+[?ActivityWritePercentIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorIdInput:X]
-Y=[%sSmartSensorIdInput:Y]
-W=[%sSmartSensorIdInput:W]
-H=[%sSmartSensorIdInput:H]
-DefaultValue=#%sActivityWritePercentId#
-Command1=!WriteKeyValue Variables %sActivityWritePercentId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorIdInput:X]
+Y=[?SmartSensorIdInput:Y]
+W=[?SmartSensorIdInput:W]
+H=[?SmartSensorIdInput:H]
+DefaultValue=#?ActivityWritePercentId#
+Command1=!WriteKeyValue Variables ?ActivityWritePercentId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sActivityReadRateIdInputMeasure]
+[?ActivityReadRateIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorIdInput:X]
-Y=[%sSmartSensorIdInput:Y]
-W=[%sSmartSensorIdInput:W]
-H=[%sSmartSensorIdInput:H]
-DefaultValue=#%sActivityReadRateId#
-Command1=!WriteKeyValue Variables %sActivityReadRateId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorIdInput:X]
+Y=[?SmartSensorIdInput:Y]
+W=[?SmartSensorIdInput:W]
+H=[?SmartSensorIdInput:H]
+DefaultValue=#?ActivityReadRateId#
+Command1=!WriteKeyValue Variables ?ActivityReadRateId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[%sActivityWriteRateIdInputMeasure]
+[?ActivityWriteRateIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
 SolidColor=#ForegroundColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
-X=[%sSmartSensorIdInput:X]
-Y=[%sSmartSensorIdInput:Y]
-W=[%sSmartSensorIdInput:W]
-H=[%sSmartSensorIdInput:H]
-DefaultValue=#%sActivityWriteRateId#
-Command1=!WriteKeyValue Variables %sActivityWriteRateId "$UserInput$" "#@#disks.var"
+X=[?SmartSensorIdInput:X]
+Y=[?SmartSensorIdInput:Y]
+W=[?SmartSensorIdInput:W]
+H=[?SmartSensorIdInput:H]
+DefaultValue=#?ActivityWriteRateId#
+Command1=!WriteKeyValue Variables ?ActivityWriteRateId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
 ;------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
 
-[%sActivityLabel]
+[?ActivityLabel]
 Meter=String
 X=85
 Y=5R
@@ -271,25 +271,25 @@ AntiAlias=1
 Text=Activity
 UpdateDivider=-1
 
-[%sShowActivityOn]
+[?ShowActivityOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
-SolidColor=#%sActivityOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables %sShowActivity "1" "#@#disks.var"][!WriteKeyValue Variables %sActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables %sActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+SolidColor=#?ActivityOnSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables ?ShowActivity "1" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[%sShowActivityOff]
+[?ShowActivityOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
-SolidColor=#%sActivityOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables %sShowActivity "0" "#@#disks.var"][!WriteKeyValue Variables %sActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables %sActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+SolidColor=#?ActivityOffSelect#
+LeftMouseUpAction=[!WriteKeyValue Variables ?ShowActivity "0" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[%sActivitySensorIdInput]
+[?ActivitySensorIdInput]
 Meter=String
 X=190
 Y=-1r
@@ -299,10 +299,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivitySensorId#
-LeftMouseUpAction=!CommandMeasure "%sActivityTemperatureIdInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivitySensorId#
+LeftMouseUpAction=!CommandMeasure "?ActivityTemperatureIdInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivitySensorInstanceInput]
+[?ActivitySensorInstanceInput]
 Meter=String
 X=287
 Y=0r
@@ -312,10 +312,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivityInstance#
-LeftMouseUpAction=!CommandMeasure "%sActivitySensorIdInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivityInstance#
+LeftMouseUpAction=!CommandMeasure "?ActivitySensorIdInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivityUsageReadLabel]
+[?ActivityUsageReadLabel]
 Meter=String
 MeterStyle=TextStyle
 StringStyle=Normal
@@ -326,7 +326,7 @@ H=19
 FontSize=10
 Text=Read Usage
 
-[%sActivityUsageReadInput]
+[?ActivityUsageReadInput]
 Meter=String
 X=409
 Y=-1r
@@ -336,10 +336,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivityReadPercentId#
-LeftMouseUpAction=!CommandMeasure "%sActivityUsageReadInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivityReadPercentId#
+LeftMouseUpAction=!CommandMeasure "?ActivityUsageReadInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivityUsageWriteLabel]
+[?ActivityUsageWriteLabel]
 Meter=String
 MeterStyle=TextStyle
 StringStyle=Normal
@@ -350,7 +350,7 @@ H=19
 FontSize=10
 Text=Write Usage
 
-[%sActivityUsageWriteInput]
+[?ActivityUsageWriteInput]
 Meter=String
 X=409
 Y=-1r
@@ -360,10 +360,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivityWritePercentId#
-LeftMouseUpAction=!CommandMeasure "%sActivityUsageWriteInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivityWritePercentId#
+LeftMouseUpAction=!CommandMeasure "?ActivityUsageWriteInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivityRateReadLabel]
+[?ActivityRateReadLabel]
 Meter=String
 MeterStyle=TextStyle
 StringStyle=Normal
@@ -374,7 +374,7 @@ H=19
 FontSize=10
 Text=Read Rate
 
-[%sActivityRateReadInput]
+[?ActivityRateReadInput]
 Meter=String
 X=409
 Y=-1r
@@ -384,10 +384,10 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivityReadRateId#
-LeftMouseUpAction=!CommandMeasure "%sActivityRateReadInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivityReadRateId#
+LeftMouseUpAction=!CommandMeasure "?ActivityRateReadInputMeasure" "ExecuteBatch 1-3"
 
-[%sActivityRateWriteLabel]
+[?ActivityRateWriteLabel]
 Meter=String
 MeterStyle=TextStyle
 StringStyle=Normal
@@ -398,7 +398,7 @@ H=19
 FontSize=10
 Text=Write Rate
 
-[%sActivityRateWriteInput]
+[?ActivityRateWriteInput]
 Meter=String
 X=409
 Y=-1r
@@ -408,5 +408,5 @@ FontSize=12
 FontColor=#ForegroundColor#
 AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
-Text=#%sActivityWriteRateId#
-LeftMouseUpAction=!CommandMeasure "%sActivityRateWriteInputMeasure" "ExecuteBatch 1-3"
+Text=#?ActivityWriteRateId#
+LeftMouseUpAction=!CommandMeasure "?ActivityRateWriteInputMeasure" "ExecuteBatch 1-3"
