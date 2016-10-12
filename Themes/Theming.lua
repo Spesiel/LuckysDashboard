@@ -45,7 +45,7 @@ function Initialize()
 
     local refreshGenerated = false
     local testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
-    if testIfExist~=nil then
+    if testIfExist then
         io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
         else refreshGenerated = true end
 
@@ -54,7 +54,7 @@ function Initialize()
 
     -- Loads the template
     local template = {}
-    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."ThemeButtonTemplate.inc")
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateButtonMeter.inc")
 	
     -- loop through the different color schemes (themes) in the txt file
     local currentTheme = 0
@@ -90,7 +90,7 @@ function Initialize()
     end
 
     if refreshGenerated then
-        WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
         SKIN:Bang('!RefreshGroup Configuration')
     end
 

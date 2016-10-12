@@ -18,13 +18,13 @@ function Initialize()
     local variables = {}
     local refreshGenerated = false
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."disks.var","r")
-    if testIfExist~=nil then io.close(testIfExist) variables = ReadIni(SKIN:ReplaceVariables("#@#").."disks.var") end
+    if testIfExist then io.close(testIfExist) variables = ReadIni(SKIN:ReplaceVariables("#@#").."disks.var") end
     testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
-    if testIfExist~=nil then
+    if testIfExist then
         io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
         else refreshGenerated = true end
     local template = {}
-    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."DiskTemplate.inc")
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateDiskMeters.inc")
     
 
     -- loop through the data for each disk
@@ -32,7 +32,7 @@ function Initialize()
     for loop=1,variables.Variables.DisksTotal,1 do
         local currentDisk = ("Disk%s"):format(loop)
 
-        if variables.Variables[currentDisk.."Letter"] ~= nil then
+        if variables.Variables[currentDisk.."Letter"] then
             -- the disk we are looking at doesn't exist yet
         else
             -- adding the base data to it
@@ -53,7 +53,7 @@ function Initialize()
             refreshGenerated = true
         end
 
-        if generated[currentDisk.."Title"] == nil then
+        if not generated[currentDisk.."Title"] then
             refreshGenerated = true
         end
         
@@ -68,7 +68,7 @@ function Initialize()
         end
     end
 
-    if generated["Disk"..(tonumber(variables.Variables.DisksTotal)+1).."Title"] ~= nil then
+    if generated["Disk"..(tonumber(variables.Variables.DisksTotal)+1).."Title"] then
         refreshGenerated = true
     end
 
@@ -79,7 +79,7 @@ function Initialize()
     -- Writes the values to files
     if refreshGenerated then
         WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
-        WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
         SKIN:Bang('!RefreshGroup Disks')
     end

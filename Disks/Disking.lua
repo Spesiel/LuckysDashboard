@@ -17,7 +17,7 @@ function Initialize()
 
     -- Loads the template
     local template = {}
-    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."DiskTemplate.inc")
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateDiskMeters.inc")
 
     -- loop through the data for each disk
     local content = {}
@@ -33,7 +33,7 @@ function Initialize()
             table.insert(content,str)
         end
     end
-    WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
     -- Sets the widget size
     local height = 0

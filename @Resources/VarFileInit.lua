@@ -25,7 +25,7 @@ end
 function GenerateVariablesFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."variables.var","r")
-    if testIfExist~=nil then io.close(testIfExist) return false end
+    if testIfExist then io.close(testIfExist) return false end
     local variables = io.open(SKIN:ReplaceVariables("#@#").."variables.var","w+")
 
     local variables = {}
@@ -55,7 +55,7 @@ end
 function GenerateClocksFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."clocks.var","r")
-    if testIfExist~=nil then io.close(testIfExist) return false end
+    if testIfExist then io.close(testIfExist) return false end
     local clocks = io.open(SKIN:ReplaceVariables("#@#").."clocks.var","w+")
 
     local clocks = {}
@@ -137,7 +137,7 @@ end
 function GenerateDisksFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'disks.var',"r")
-    if testIfExist~=nil then io.close(testIfExist) return false end
+    if testIfExist then io.close(testIfExist) return false end
     local disks = {}
     disks["Metadata"] = GenerateMetadata("DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
 
