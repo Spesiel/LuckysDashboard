@@ -63,7 +63,7 @@ Command2=!RefreshGroup Disks
 [?Title]
 Meter=String
 X=10
-Y=21r
+Y=10R
 W=45
 H=20
 FontSize=12

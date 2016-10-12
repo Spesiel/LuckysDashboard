@@ -16,9 +16,13 @@ function Initialize()
 
     local generated = {}
     local variables = {}
+    local refreshGenerated = false
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."disks.var","r")
     if testIfExist~=nil then io.close(testIfExist) variables = ReadIni(SKIN:ReplaceVariables("#@#").."disks.var") end
-    local refreshGenerated = false
+    testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
+    if testIfExist~=nil then
+        io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        else refreshGenerated = true end
     local template = {}
     template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."DiskTemplate.inc")
     
@@ -48,8 +52,13 @@ function Initialize()
             variables.Variables[currentDisk.."ActivityWriteRateId"] = "0x8000001"
             variables.Variables[currentDisk.."ActivityOnSelect"] = "100,250,100"
             variables.Variables[currentDisk.."ActivityOffSelect"] = "#BackgroundColorDimMin#"
+            refreshGenerated = true
         end
 
+        if generated[currentDisk.."Title"] == nil then
+            refreshGenerated = true
+        end
+        
         for key,value in ipairs(template) do
             if string.find(value,"?") then
                 local str = string.gsub(value,"?",currentDisk)
@@ -58,16 +67,28 @@ function Initialize()
                 table.insert(content,value)
             end
         end
+    end
+
+    if generated["Disk"..(tonumber(variables.Variables.DisksTotal)+1).."Title"] ~= nil then
         refreshGenerated = true
     end
+
+    -- Sets the dialog size based on the number of disks
+    local height = 0
+    local disksTotal = SKIN:GetVariable("DisksTotal")
 
     -- Writes the values to files
     if refreshGenerated then
         WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
         WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+
+        --SKIN:Bang('!Updategroup Disks')
+        SKIN:Bang('!RefreshGroup Disks')
     end
 
-    SKIN:Bang('!Updategroup Disks')
+    height = 81+disksTotal*121+5
+    SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
+    SKIN:Bang("!UpdateMeter SkinSizing")
 end
 
 function table.contains(table, element)
