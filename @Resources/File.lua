@@ -54,7 +54,7 @@ function WriteIni(inputtable, filepath)
             file:write(("[%s]"):format(section),"\n")
             for key, value in pairs(contents) do
 				-- It's a comment
-				if string.sub(key,1,1)==";" then
+				if key:sub(1,1)==";" then
 					file:write(("%s"):format(value),"\n")
 				-- It's data
                 else

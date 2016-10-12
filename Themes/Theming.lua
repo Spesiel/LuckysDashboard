@@ -66,23 +66,23 @@ function Initialize()
         for _,value in ipairs(template) do
             local str = ""
             -- Switch on the current line to change what needs to be changed
-            if     string.find(value,"Theme_")             then str = string.gsub(value,"|",title)
-            elseif string.find(value,"X=")                 then
-                        currentLineLength = currentLineLength + 10*(string.len(pair.Name))
+            if     value:find("Theme_")             then str = value:gsub("|",title)
+            elseif value:find("X=")                 then
+                        currentLineLength = currentLineLength + 10*(pair.Name:len())
                         if currentTheme>1 and currentLineLength<760 then
                             str = value.."10R"
                             valueY="r"
                         else
-                            currentLineLength = 30 + 10*(string.len(pair.Name))
+                            currentLineLength = 30 + 10*(pair.Name:len())
                             str = value.."20"
                             valueY="10R"
                         end
-            elseif string.find(value,"Y=")                 then str = value..valueY
-            elseif string.find(value,"SolidColor=")        then str = value..pair.BackgroundColor
-            elseif string.find(value,"FontColor=")         then str = value..pair.TextColor
-            elseif string.find(value,"Text=")              then str = value..pair.Name
-            elseif string.find(value,"MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
-            elseif string.find(value,"LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
+            elseif value:find("Y=")                 then str = value..valueY
+            elseif value:find("SolidColor=")        then str = value..pair.BackgroundColor
+            elseif value:find("FontColor=")         then str = value..pair.TextColor
+            elseif value:find("Text=")              then str = value..pair.Name
+            elseif value:find("MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
+            elseif value:find("LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
             else str = value end
 
             table.insert(content,str)

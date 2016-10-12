@@ -58,8 +58,8 @@ function Initialize()
         end
         
         for _,value in ipairs(template) do
-            if string.find(value,"|") then
-                local str = string.gsub(value,"|",currentDisk)
+            if value:find("|") then
+                local str = value:gsub("|",currentDisk)
                 table.insert(content,str)
             else
                 table.insert(content,value)
