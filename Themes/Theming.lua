@@ -43,48 +43,56 @@ function Initialize()
     -- Loads the Read and Write methods for ini files
     dofile(SKIN:ReplaceVariables("#@#").."File.lua")
 
-    -- load ini file
-	local file = assert(io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt','r'), 'Unable to open ColorSchemes.txt')
-	local iniFile = ReadIni(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt')
-	
-    -- generate the buttons for previewing and applying the theme
-    local doRefresh = false
+    local refreshGenerated = false
+    local testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
+    if testIfExist~=nil then
+        io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        else refreshGenerated = true end
 
+    -- load ini file
+	local colorSchemes = ReadIni(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt')
+
+    -- Loads the template
+    local template = {}
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."ThemeButtonTemplate.inc")
+	
     -- loop through the different color schemes (themes) in the txt file
     local currentTheme = 0
     local currentLineLength = 0
-    local generated = {}
-    for title,pair in pairs(iniFile) do
+    local content = {}
+    for title,pair in pairs(colorSchemes) do
         currentTheme = currentTheme + 1
+        local valueY = ""
+        for _,value in ipairs(template) do
+            local str = ""
+            -- Switch on the current line to change what needs to be changed
+            if     string.find(value,"Theme_")             then str = string.gsub(value,"|",title)
+            elseif string.find(value,"X=")                 then
+                        currentLineLength = currentLineLength + 10*(string.len(pair.Name))
+                        if currentTheme>1 and currentLineLength<760 then
+                            str = value.."10R"
+                            valueY="r"
+                        else
+                            currentLineLength = 30 + 10*(string.len(pair.Name))
+                            str = value.."20"
+                            valueY="10R"
+                        end
+            elseif string.find(value,"Y=")                 then str = value..valueY
+            elseif string.find(value,"SolidColor=")        then str = value..pair.BackgroundColor
+            elseif string.find(value,"FontColor=")         then str = value..pair.ForegroundColor
+            elseif string.find(value,"Text=")              then str = value..pair.Name
+            elseif string.find(value,"MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
+            elseif string.find(value,"LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
+            else str = value end
 
-        local addition = {}
-        addition["Meter"]="String"
-        addition["MeterStyle"]="TextStyle"
-        addition["Padding"]="10,10,10,10"
-        addition["FontSize"]=10
-
-        currentLineLength = currentLineLength + 10*(string.len(pair.Name))
-        if currentTheme>1 and currentLineLength<760 then
-            addition["X"]="10R"
-            addition["Y"]="r"
-        else
-            currentLineLength = 30 + 10*(string.len(pair.Name))
-            addition["X"]="20"
-            addition["Y"]="10R"
+            table.insert(content,str)
         end
-
-        addition["SolidColor"]=pair.BackgroundColor
-        addition["FontColor"]=pair.ForegroundColor
-        addition["Text"]=pair.Name
-        addition["MouseOverAction"]=("!CommandMeasure Theming \"Preview('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
-        addition["LeftMouseUpAction"]=("!CommandMeasure Theming \"Apply('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
-
-        generated[("Theme_%s"):format(title)] = addition
     end
-    WriteIni(generated,SKIN:ReplaceVariables("#CURRENTPATH#").."generated.inc")
 
-    if doRefresh then
-        SKIN:Bang('!Refresh')
+    if refreshGenerated then
+        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        SKIN:Bang('!RefreshGroup Configuration')
     end
+
     SKIN:Bang('!Updategroup Preview')
 end
