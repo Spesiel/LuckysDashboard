@@ -1,41 +1,41 @@
 [WhiteOnBlack]
 Name=White on Black
 BackgroundColor=0,0,0,95
-ForegroundColor=255,255,255
-ForegroundColorDimLight=255,255,255,150
-ForegroundColorDimMin=255,255,255,50
+TextColor=255,255,255
+MeterColor=255,255,255,150
+BackdropColor=255,255,255,50
 
 [SoftWhiteOnBlack]
 Name=Soft White on Black
 BackgroundColor=53,52,72,95
-ForegroundColor=252,254,255,200
-ForegroundColorDimLight=204,205,216,150
-ForegroundColorDimMin=125,127,149,50
+TextColor=252,254,255,200
+MeterColor=204,205,216,150
+BackdropColor=125,127,149,50
 
 [BlackOnWhite]
 Name=Black on White
 BackgroundColor=255,255,255,75
-ForegroundColor=0,0,0
-ForegroundColorDimLight=0,0,0,150
-ForegroundColorDimMin=0,0,0,50
+TextColor=0,0,0
+MeterColor=0,0,0,150
+BackdropColor=0,0,0,50
 
 [Beach]
 Name=Beach
 BackgroundColor=107,90,98,150
-ForegroundColor=255,252,165
-ForegroundColorDimLight=201,121,124,150
-ForegroundColorDimMin=255,189,158,50
+TextColor=255,252,165
+MeterColor=201,121,124,150
+BackdropColor=255,189,158,50
 
 [Monokai]
 Name=Monokai
 BackgroundColor=249,38,114,40
-ForegroundColor=102,217,239
-ForegroundColorDimLight=166,226,46,180
-ForegroundColorDimMin=253,151,31,75
+TextColor=102,217,239
+MeterColor=166,226,46,180
+BackdropColor=253,151,31,75
 
 [Hacker]
 Name=Hacker
 BackgroundColor=0,0,0,165
-ForegroundColor=0,255,0,165
-ForegroundColorDimLight=0,128,0,150
-ForegroundColorDimMin=255,255,255,50
+TextColor=0,255,0,165
+MeterColor=0,128,0,150
+BackdropColor=255,255,255,50

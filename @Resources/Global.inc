@@ -52,12 +52,12 @@ Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
 
 [BarStyle]
 BarOrientation=Horizontal
-BarColor=#ForegroundColor#
-SolidColor=#ForegroundColorDimMin#
+BarColor=#MeterColor#
+SolidColor=#BackdropColor#
 
 [HistogramStyle]
-PrimaryColor=#ForegroundColor#
-SolidColor=#ForegroundColorDimMin#
+PrimaryColor=#MeterColor#
+SolidColor=#BackdropColor#
 AntiAlias=1
 AutoScale=1
 
@@ -68,7 +68,7 @@ AutoScale=1
 StringStyle=Bold
 StringEffect=Shadow
 FontEffectColor=0,0,0,20
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 FontFace=Trebuchet MS
 FontSize=12
 AntiAlias=1

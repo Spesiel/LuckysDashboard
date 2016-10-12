@@ -14,27 +14,27 @@
 -- Allows for preview of the theme
 function Preview(
                 BackgroundColor,
-                ForegroundColor,
-                ForegroundColorDimLight,
-                ForegroundColorDimMin)
+                TextColor,
+                MeterColor,
+                BackdropColor)
     SKIN:Bang('!SetOption Preview_Skin_Background SolidColor '..BackgroundColor)
-    SKIN:Bang('!SetOption Preview_Skin_ForegroundTL FontColor '..ForegroundColor)
-    SKIN:Bang('!SetOption Preview_Skin_ForegroundBR FontColor '..ForegroundColor)
-    SKIN:Bang('!SetOption Preview_Skin_ForegroundCC BarColor '..ForegroundColorDimLight)
-    SKIN:Bang('!SetOption Preview_Skin_ForegroundCC SolidColor '..ForegroundColorDimMin)
+    SKIN:Bang('!SetOption Preview_Skin_ForegroundTL FontColor '..TextColor)
+    SKIN:Bang('!SetOption Preview_Skin_ForegroundBR FontColor '..TextColor)
+    SKIN:Bang('!SetOption Preview_Skin_ForegroundCC BarColor '..MeterColor)
+    SKIN:Bang('!SetOption Preview_Skin_ForegroundCC SolidColor '..BackdropColor)
     SKIN:Bang('!UpdateMeterGroup Preview')
 end
 
 -- Applies the theme to every element
 function Apply(
                 BackgroundColor,
-                ForegroundColor,
-                ForegroundColorDimLight,
-                ForegroundColorDimMin)
+                TextColor,
+                MeterColor,
+                BackdropColor)
     SKIN:Bang('!WriteKeyValue Variables BackgroundColor '..BackgroundColor..' "#@#variables.var"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColor '..ForegroundColor..' "#@#variables.var"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimLight '..ForegroundColorDimLight..' "#@#variables.var"')
-    SKIN:Bang('!WriteKeyValue Variables ForegroundColorDimMin '..ForegroundColorDimMin..' "#@#variables.var"')
+    SKIN:Bang('!WriteKeyValue Variables TextColor '..TextColor..' "#@#variables.var"')
+    SKIN:Bang('!WriteKeyValue Variables MeterColor '..MeterColor..' "#@#variables.var"')
+    SKIN:Bang('!WriteKeyValue Variables BackdropColor '..BackdropColor..' "#@#variables.var"')
     SKIN:Bang('!RefreshApp')
 end
 
@@ -79,10 +79,10 @@ function Initialize()
                         end
             elseif string.find(value,"Y=")                 then str = value..valueY
             elseif string.find(value,"SolidColor=")        then str = value..pair.BackgroundColor
-            elseif string.find(value,"FontColor=")         then str = value..pair.ForegroundColor
+            elseif string.find(value,"FontColor=")         then str = value..pair.TextColor
             elseif string.find(value,"Text=")              then str = value..pair.Name
-            elseif string.find(value,"MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
-            elseif string.find(value,"LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.ForegroundColor,pair.ForegroundColorDimLight,pair.ForegroundColorDimMin)
+            elseif string.find(value,"MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
+            elseif string.find(value,"LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
             else str = value end
 
             table.insert(content,str)

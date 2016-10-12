@@ -1,7 +1,7 @@
 [|LetterInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -16,7 +16,7 @@ Command2=!RefreshGroup Disks
 [|SmartSensorIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -31,7 +31,7 @@ Command2=!RefreshGroup Disks
 [|SmartInstanceInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -46,7 +46,7 @@ Command2=!RefreshGroup Disks
 [|SmartTemperatureIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -67,7 +67,7 @@ Y=10R
 W=45
 H=20
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
 Text=|
 UpdateDivider=-1
@@ -79,9 +79,9 @@ Y=0r
 W=20
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|Letter#
 LeftMouseUpAction=!CommandMeasure "|LetterInputMeasure" "ExecuteBatch 1-3"
 
@@ -92,7 +92,7 @@ Y=0r
 W=10
 H=20
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
 Text=:
 UpdateDivider=-1
@@ -104,7 +104,7 @@ Y=1r
 W=50
 H=20
 FontSize=10
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
 Text=SMART
 UpdateDivider=-1
@@ -116,7 +116,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|SmartOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "0" "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "0" "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|HideTemperatureOff]
 Meter=Image
@@ -125,7 +125,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|SmartOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "1" "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "1" "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|SmartSensorIdInput]
 Meter=String
@@ -134,9 +134,9 @@ Y=-1r
 W=95
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|SmartSensorId#
 LeftMouseUpAction=!CommandMeasure "|SmartTemperatureIdInputMeasure" "ExecuteBatch 1-3"
 
@@ -147,9 +147,9 @@ Y=0r
 W=35
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|SmartInstance#
 LeftMouseUpAction=!CommandMeasure "|SmartSensorIdInputMeasure" "ExecuteBatch 1-3"
 
@@ -171,16 +171,16 @@ Y=-1r
 W=95
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|SmartTemperatureId#
 LeftMouseUpAction=!CommandMeasure "|SmartInstanceInputMeasure" "ExecuteBatch 1-3"
 
 [|ActivitySensorIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -195,7 +195,7 @@ Command2=!RefreshGroup Disks
 [|ActivityInstanceInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -210,7 +210,7 @@ Command2=!RefreshGroup Disks
 [|ActivityReadPercentIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -225,7 +225,7 @@ Command2=!RefreshGroup Disks
 [|ActivityWritePercentIdInputMeasure]
 Measure=Plugin
 Plugin=InputText
-SolidColor=#ForegroundColor#
+SolidColor=#TextColor#
 FontColor=#BackgroundColor#
 FontFace=Seqoe UI
 FontSize=12
@@ -247,7 +247,7 @@ Y=5R
 W=50
 H=20
 FontSize=10
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
 Text=Activity
 UpdateDivider=-1
@@ -259,7 +259,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|ActivityOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "0" "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "0" "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|HideActivityOff]
 Meter=Image
@@ -268,7 +268,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|ActivityOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "1" "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "1" "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|ActivitySensorIdInput]
 Meter=String
@@ -277,9 +277,9 @@ Y=-1r
 W=95
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|ActivitySensorId#
 LeftMouseUpAction=!CommandMeasure "|ActivityTemperatureIdInputMeasure" "ExecuteBatch 1-3"
 
@@ -290,9 +290,9 @@ Y=0r
 W=35
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|ActivityInstance#
 LeftMouseUpAction=!CommandMeasure "|ActivitySensorIdInputMeasure" "ExecuteBatch 1-3"
 
@@ -314,9 +314,9 @@ Y=-1r
 W=95
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|ActivityReadPercentId#
 LeftMouseUpAction=!CommandMeasure "|ActivityUsageReadInputMeasure" "ExecuteBatch 1-3"
 
@@ -338,8 +338,8 @@ Y=-1r
 W=95
 H=19
 FontSize=12
-FontColor=#ForegroundColor#
+FontColor=#TextColor#
 AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
+SolidColor=#BackdropColor#
 Text=#|ActivityWritePercentId#
 LeftMouseUpAction=!CommandMeasure "|ActivityUsageWriteInputMeasure" "ExecuteBatch 1-3"

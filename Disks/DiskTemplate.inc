@@ -116,25 +116,6 @@ Hidden=#|HideTemperature#
 ;------------------------------------------------------------------------------
 ; Activity display
 
-[|ActivityReadRateMeasure]
-Measure=Plugin
-Plugin=PerfMon
-PerfMonObject=LogicalDisk
-PerfMonCounter=Disk Read Bytes/sec
-PerfMonInstance=#|Letter#:
-
-[|ActivityReadRateLabel]
-Meter=String
-MeterStyle=TextStyle
-FontSize=7
-MeasureName=|ActivityReadRateMeasure
-X=73
-Y=([|Title:Y]+4)
-Text=R %1Bps
-AutoScale=1
-TransformationMatrix=#Scaling#
-Hidden=#|HideActivity#
-
 [|ActivityReadPercentMeasureValue]
 Measure=Plugin
 Plugin=HWiNFO.dll
@@ -156,23 +137,21 @@ H=19
 TransformationMatrix=#Scaling#
 Hidden=#|HideActivity#
 
-[|ActivityWriteRateMeasure]
+[|ActivityReadRateMeasure]
 Measure=Plugin
 Plugin=PerfMon
 PerfMonObject=LogicalDisk
-PerfMonCounter=Disk Write Bytes/sec
+PerfMonCounter=Disk Read Bytes/sec
 PerfMonInstance=#|Letter#:
 
-[|ActivityWriteRateLabel]
+[|ActivityReadRateLabel]
 Meter=String
 MeterStyle=TextStyle
 FontSize=7
-MeasureName=|ActivityWriteRateMeasure
+MeasureName=|ActivityReadRateMeasure
 X=73
-Y=([|UsedBar:Y]+10)
-W=171
-H=19
-Text=W %1Bps
+Y=([|Title:Y]+4)
+Text=R %1Bps
 AutoScale=1
 TransformationMatrix=#Scaling#
 Hidden=#|HideActivity#
@@ -196,6 +175,27 @@ X=73
 Y=([|UsedBar:Y]+4)
 W=171
 H=19
+TransformationMatrix=#Scaling#
+Hidden=#|HideActivity#
+
+[|ActivityWriteRateMeasure]
+Measure=Plugin
+Plugin=PerfMon
+PerfMonObject=LogicalDisk
+PerfMonCounter=Disk Write Bytes/sec
+PerfMonInstance=#|Letter#:
+
+[|ActivityWriteRateLabel]
+Meter=String
+MeterStyle=TextStyle
+FontSize=7
+MeasureName=|ActivityWriteRateMeasure
+X=73
+Y=([|UsedBar:Y]+10)
+W=171
+H=19
+Text=W %1Bps
+AutoScale=1
 TransformationMatrix=#Scaling#
 Hidden=#|HideActivity#
 
