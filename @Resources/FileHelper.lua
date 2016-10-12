@@ -1,5 +1,5 @@
 ------- Metadata --------------------------------------------------------------
--- File
+-- FileHelper
 -- Author: Lucky Penny
 -- Description: Methods for file manipulations within the skin.
 -- License: Creative Commons BY-NC-SA 3.0
@@ -13,32 +13,32 @@
 
 
 function ReadIni(filepath)
-	local file = assert(io.open(filepath, 'r'), 'Unable to open ' .. filepath)
+	local file = assert(io.open(filepath, "r"), "Unable to open " .. filepath)
 	local table, section = {}
 	local num = 0
 	for line in file:lines() do
 		num = num + 1
-		if not line:match('^%s-;') then
-			local key, command = line:match('^([^=]+)=(.+)')
-			if line:match('^%s-%[.+') then
-				section = line:match('^%s-%[([^%]]+)')
+		if not line:match("^%s-;") then
+			local key, command = line:match("^([^=]+)=(.+)")
+			if line:match("^%s-%[.+") then
+				section = line:match("^%s-%[([^%]]+)")
 				if not table[section] then table[section] = {} end
 			elseif key and command and section then
-				table[section][key:match('^s*(%S*)%s*$')] = command:match('^s*(.-)%s*$')
+				table[section][key:match("^s*(%S*)%s*$")] = command:match("^s*(.-)%s*$")
 			elseif #line > 0 and section and not key or command then
-				print(num .. ': Invalid property or value.')
+				print(num .. ": Invalid property or value.")
 			end
 		end
 	end
-	if not section then print('No sections found in ' .. filepath) end
+	if not section then print("No sections found in " .. filepath) end
 	file:close()
 	return table
 end
 
 function WriteIni(inputtable, filepath)
-	assert(type(inputtable) == 'table', ('WriteIni must receive a table. Received %s instead.'):format(type(inputtable)))
+	assert(type(inputtable) == "table", ("WriteIni must receive a table. Received %s instead."):format(type(inputtable)))
 
-	local file = assert(io.open(filepath, 'w+'), 'Unable to open ' .. filepath)
+	local file = assert(io.open(filepath, "w+"), "Unable to open " .. filepath)
 
     if inputtable.Metadata ~= nil then
         file:write("[Metadata]","\n")
@@ -53,10 +53,10 @@ function WriteIni(inputtable, filepath)
         if section ~= "Metadata" then
             file:write(("[%s]"):format(section),"\n")
             for key, value in pairs(contents) do
-				-- It's a comment
+				-- It"s a comment
 				if key:sub(1,1)==";" then
 					file:write(("%s"):format(value),"\n")
-				-- It's data
+				-- It"s data
                 else
 					file:write(("%s=%s"):format(key,value),"\n")
 				end
@@ -69,31 +69,17 @@ function WriteIni(inputtable, filepath)
 end
 
 function ReadFile(filepath)
-	-- OPEN FILE.
-	local File = io.open(filepath)
+	local file = assert(io.open(filepath,"r"), "ReadFile: unable to open " .. filepath)
+	if not file then return	end
 
-	-- HANDLE ERROR OPENING FILE.
-	if not File then
-		print('ReadFile: unable to open file at ' .. filepath)
-		return
-	end
+	local content = {}
+	for line in file:lines() do table.insert(content,line) end
 
-	-- READ FILE CONTENTS AND CLOSE.
-	local Contents = {}
-	for Line in File:lines() do
-		table.insert(Contents, Line)
-	end
-
-	return Contents
+	return content
 end
 
 function WriteFile(inputtable,filepath)
-	-- OPEN FILE.
-	local File = assert(io.open(filepath, 'w+'), 'Unable to open ' .. filepath)
-
-	-- WRITE CONTENTS AND CLOSE FILE
-	File:write(inputtable)
-	File:close()
-
-	return true
+	local file = assert(io.open(filepath, "w+"), "WriteFile: Unable to open " .. filepath)
+	file:write(inputtable)
+	file:close()
 end

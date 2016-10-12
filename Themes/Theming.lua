@@ -41,7 +41,7 @@ end
 -- Load all schemes from file
 function Initialize()
     -- Loads the Read and Write methods for ini files
-    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
     local refreshGenerated = false
     local testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
@@ -68,12 +68,12 @@ function Initialize()
             -- Switch on the current line to change what needs to be changed
             if     value:find("Theme_")             then str = value:gsub("|",title)
             elseif value:find("X=")                 then
-                        currentLineLength = currentLineLength + 10*(pair.Name:len())
+                        currentLineLength = currentLineLength + 10*((pair.Name):len())
                         if currentTheme>1 and currentLineLength<760 then
                             str = value.."10R"
                             valueY="r"
                         else
-                            currentLineLength = 30 + 10*(pair.Name:len())
+                            currentLineLength = 30 + 10*((pair.Name):len())
                             str = value.."20"
                             valueY="10R"
                         end
@@ -90,7 +90,7 @@ function Initialize()
     end
 
     if refreshGenerated then
-        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
         SKIN:Bang('!RefreshGroup Configuration')
     end
 

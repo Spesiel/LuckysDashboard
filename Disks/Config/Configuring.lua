@@ -12,7 +12,7 @@
 -- Load all data from generated.inc and disks.var
 function Initialize()
     -- Loads the Read and Write methods for ini files
-    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
     local generated = {}
     local variables = {}
@@ -58,12 +58,13 @@ function Initialize()
         end
         
         for _,value in ipairs(template) do
+            local str = ""
             if value:find("|") then
-                local str = value:gsub("|",currentDisk)
-                table.insert(content,str)
+                str = value:gsub("|",currentDisk)
             else
-                table.insert(content,value)
+                str = value
             end
+            table.insert(content,str)
         end
     end
 
@@ -78,7 +79,7 @@ function Initialize()
     -- Writes the values to files
     if refreshGenerated then
         WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
-        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+        WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
         SKIN:Bang('!RefreshGroup Disks')
     end
@@ -86,13 +87,4 @@ function Initialize()
     height = 81+disksTotal*75+5
     SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
     SKIN:Bang("!UpdateMeter SkinSizing")
-end
-
-function table.contains(table, element)
-  for _, value in pairs(table) do
-    if value == element then
-      return true
-    end
-  end
-  return false
 end

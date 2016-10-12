@@ -12,7 +12,7 @@
 -- Load all schemes from file
 function Initialize()
     -- Loads the Read and Write methods for ini files
-    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
     local disksTotal = SKIN:GetVariable("DisksTotal")
 
     -- Loads the template
@@ -24,15 +24,16 @@ function Initialize()
     for loop=1,disksTotal,1 do
         local currentDisk = ("Disk%s"):format(loop)
         for _,value in ipairs(template) do
+            local str = ""
             if value:find("|") then
-                local str = value:gsub("|",currentDisk)
-                table.insert(content,str)
+                str = value:gsub("|",currentDisk)
             else
-                table.insert(content,value)
+                str = value
             end
+            table.insert(content,str)
         end
     end
-    WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    WriteFile(content:concat("\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
     -- Sets the widget size
     local height = 0
