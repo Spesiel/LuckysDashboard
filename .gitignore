@@ -2,4 +2,5 @@
 @Resources/clocks.var
 @Resources/disks.var
 Disks/Config/generated.inc
+Disks/generated.inc
 Themes/generated.inc

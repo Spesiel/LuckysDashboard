@@ -11,19 +11,43 @@
 
 -- Load all schemes from file
 function Initialize()
-    local height = 0
+    -- Loads the Read and Write methods for ini files
+    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
     local disksTotal = SKIN:GetVariable("DisksTotal")
 
-    height = disksTotal*36
+    -- Loads the template
+    local template = {}
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."DiskTemplate.inc")
+
+    -- loop through the data for each disk
+    local content = {}
+    for loop=1,disksTotal,1 do
+        local currentDisk = ("Disk%s"):format(loop)
+        for key,value in ipairs(template) do
+            if string.find(value,"|") then
+                local str = string.gsub(value,"|",currentDisk)
+                table.insert(content,str)
+            else
+                table.insert(content,value)
+            end
+        end
+    end
+    WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+
+    -- Sets the widget size
+    local height = 0
+
+    height = disksTotal*30
 
     for currentDisk=1,disksTotal,1 do
-        if SKIN:GetVariable("Disk"..currentDisk.."HideTemperature")=="0" then
+        if (SKIN:GetVariable("Disk"..currentDisk.."HideTemperature")=="0") and (SKIN:GetVariable("Disk"..currentDisk.."HideActivity")=="1") then
             height = height + 10
         end
         if SKIN:GetVariable("Disk"..currentDisk.."HideActivity")=="0" then
-            height = height + 20*2
+            height = height + 16
         end
     end
+    height = height + 5
 
     SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
     SKIN:Bang("!UpdateMeter SkinSizing")

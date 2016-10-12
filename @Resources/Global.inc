@@ -52,6 +52,12 @@ BarOrientation=Horizontal
 BarColor=#ForegroundColor#
 SolidColor=#ForegroundColorDimMin#
 
+[HistogramStyle]
+PrimaryColor=#ForegroundColor#
+SolidColor=#ForegroundColorDimMin#
+AntiAlias=1
+AutoScale=1
+
 ;------------------------------------------------------------------------------
 ; Text Styling
 
