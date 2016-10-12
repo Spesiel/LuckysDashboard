@@ -88,9 +88,6 @@ end
 
 function WriteFile(Contents,FilePath)
 	-- OPEN FILE.
-	local File = io.open(FilePath, 'w+')
-
-	-- HANDLE ERROR OPENING FILE.
 	local File = assert(io.open(FilePath, 'w+'), 'Unable to open ' .. FilePath)
 
 	-- WRITE CONTENTS AND CLOSE FILE

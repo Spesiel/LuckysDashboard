@@ -109,23 +109,23 @@ AntiAlias=1
 Text=SMART
 UpdateDivider=-1
 
-[?ShowTemperatureOn]
+[?HideTemperatureOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
 SolidColor=#?SmartOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables ?ShowTemperature "1" "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables ?HideTemperature "0" "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[?ShowTemperatureOff]
+[?HideTemperatureOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
 SolidColor=#?SmartOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables ?ShowTemperature "0" "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables ?HideTemperature "1" "#@#disks.var"][!WriteKeyValue Variables ?SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?SmartOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
 [?SmartSensorIdInput]
 Meter=String
@@ -271,23 +271,23 @@ AntiAlias=1
 Text=Activity
 UpdateDivider=-1
 
-[?ShowActivityOn]
+[?HideActivityOn]
 Meter=Image
 X=140
 Y=0r
 W=14
 H=14
 SolidColor=#?ActivityOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables ?ShowActivity "1" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables ?HideActivity "0" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
-[?ShowActivityOff]
+[?HideActivityOff]
 Meter=Image
 X=160
 Y=0r
 W=14
 H=14
 SolidColor=#?ActivityOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables ?ShowActivity "0" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables ?HideActivity "1" "#@#disks.var"][!WriteKeyValue Variables ?ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables ?ActivityOnSelect #ForegroundColorDimMin# "#@#disks.var"][!RefreshGroup Disks]
 
 [?ActivitySensorIdInput]
 Meter=String

@@ -146,7 +146,6 @@ function GenerateDisksFile()
     variables[";2"]="; Disks common variables\n"
     variables["DisksTotal"]=1
     
-    variables[";3"] = "\n; Disk1"
     variables["Disk1Letter"]= "C"
     variables["Disk1HideTemperature"] = "0"
     variables["Disk1SmartSensorId"] = "0xf0000100"
