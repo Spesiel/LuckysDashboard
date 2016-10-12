@@ -60,8 +60,8 @@ function Initialize()
         end
         
         for key,value in ipairs(template) do
-            if string.find(value,"?") then
-                local str = string.gsub(value,"?",currentDisk)
+            if string.find(value,"|") then
+                local str = string.gsub(value,"|",currentDisk)
                 table.insert(content,str)
             else
                 table.insert(content,value)
