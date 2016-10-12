@@ -153,10 +153,21 @@ SolidColor=#ForegroundColorDimMin#
 Text=#?SmartInstance#
 LeftMouseUpAction=!CommandMeasure "?SmartSensorIdInputMeasure" "ExecuteBatch 1-3"
 
+[?SmartTemperatureIdLabel]
+Meter=String
+MeterStyle=TextStyle
+StringStyle=Normal
+X=324
+Y=1r
+W=90
+H=19
+FontSize=10
+Text=Entry ID
+
 [?SmartTemperatureIdInput]
 Meter=String
-X=324
-Y=0r
+X=409
+Y=-1r
 W=95
 H=19
 FontSize=12
