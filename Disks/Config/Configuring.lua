@@ -12,7 +12,7 @@
 -- Load all data from generated.inc and disks.var
 function Initialize()
     -- Loads the Read and Write methods for ini files
-    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
 
     local generated = {}
     local variables = {}

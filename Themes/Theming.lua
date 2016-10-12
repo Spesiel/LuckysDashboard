@@ -41,7 +41,7 @@ end
 -- Load all schemes from file
 function Initialize()
     -- Loads the Read and Write methods for ini files
-    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
 
     -- load ini file
 	local file = assert(io.open(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt','r'), 'Unable to open ColorSchemes.txt')

@@ -23,7 +23,7 @@ end
 
 -- variables.var
 function GenerateVariablesFile()
-    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."variables.var","r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local variables = io.open(SKIN:ReplaceVariables("#@#").."variables.var","w+")
@@ -53,7 +53,7 @@ end
 
 -- clocks.var
 function GenerateClocksFile()
-    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."clocks.var","r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local clocks = io.open(SKIN:ReplaceVariables("#@#").."clocks.var","w+")
@@ -135,7 +135,7 @@ end
 
 -- disks.var
 function GenerateDisksFile()
-    dofile(SKIN:ReplaceVariables("#@#").."ReadWriteIni.lua")
+    dofile(SKIN:ReplaceVariables("#@#").."File.lua")
     local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'disks.var',"r")
     if testIfExist~=nil then io.close(testIfExist) return false end
     local disks = {}

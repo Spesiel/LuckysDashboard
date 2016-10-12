@@ -1,18 +1,19 @@
 ------- Metadata --------------------------------------------------------------
--- ReadWriteIni
+-- File
 -- Author: Lucky Penny
--- Description: Read and Write methods for ini files.
+-- Description: Methods for file manipulations within the skin.
 -- License: Creative Commons BY-NC-SA 3.0
 -- Version: 0.0.1
 --
--- ReadIni(inputfile): Reads an ini file and returns it as a table.
--- WriteIni(inputtable,filename): Writes the ini data to file.
--- ReadFile(FilePath): Reads a file as it is and returns it as a table.
+-- ReadIni(filepath): Reads an ini file and returns it as a table.
+-- WriteIni(inputtable,filepath): Writes the ini data to file.
+-- ReadFile(filepath): Reads a file as it is and returns it as a table.
+-- WriteFile(inputtable,filepath): Writes the data to file.
 -------------------------------------------------------------------------------
 
 
-function ReadIni(inputfile)
-	local file = assert(io.open(inputfile, 'r'), 'Unable to open ' .. inputfile)
+function ReadIni(filepath)
+	local file = assert(io.open(filepath, 'r'), 'Unable to open ' .. filepath)
 	local table, section = {}
 	local num = 0
 	for line in file:lines() do
@@ -29,15 +30,15 @@ function ReadIni(inputfile)
 			end
 		end
 	end
-	if not section then print('No sections found in ' .. inputfile) end
+	if not section then print('No sections found in ' .. filepath) end
 	file:close()
 	return table
 end
 
-function WriteIni(inputtable, filename)
+function WriteIni(inputtable, filepath)
 	assert(type(inputtable) == 'table', ('WriteIni must receive a table. Received %s instead.'):format(type(inputtable)))
 
-	local file = assert(io.open(filename, 'w+'), 'Unable to open ' .. filename)
+	local file = assert(io.open(filepath, 'w+'), 'Unable to open ' .. filepath)
 
     if inputtable.Metadata ~= nil then
         file:write("[Metadata]","\n")
@@ -67,13 +68,13 @@ function WriteIni(inputtable, filename)
 	file:close()
 end
 
-function ReadFile(FilePath)
+function ReadFile(filepath)
 	-- OPEN FILE.
-	local File = io.open(FilePath)
+	local File = io.open(filepath)
 
 	-- HANDLE ERROR OPENING FILE.
 	if not File then
-		print('ReadFile: unable to open file at ' .. FilePath)
+		print('ReadFile: unable to open file at ' .. filepath)
 		return
 	end
 
@@ -86,12 +87,12 @@ function ReadFile(FilePath)
 	return Contents
 end
 
-function WriteFile(Contents,FilePath)
+function WriteFile(inputtable,filepath)
 	-- OPEN FILE.
-	local File = assert(io.open(FilePath, 'w+'), 'Unable to open ' .. FilePath)
+	local File = assert(io.open(filepath, 'w+'), 'Unable to open ' .. filepath)
 
 	-- WRITE CONTENTS AND CLOSE FILE
-	File:write(Contents)
+	File:write(inputtable)
 	File:close()
 
 	return true
