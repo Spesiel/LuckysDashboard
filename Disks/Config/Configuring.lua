@@ -48,8 +48,6 @@ function Initialize()
             variables.Variables[currentDisk.."ActivityInstance"] = "0x0"
             variables.Variables[currentDisk.."ActivityReadPercentId"] = "0x7000000"
             variables.Variables[currentDisk.."ActivityWritePercentId"] = "0x7000001"
-            variables.Variables[currentDisk.."ActivityReadRateId"] = "0x8000000"
-            variables.Variables[currentDisk.."ActivityWriteRateId"] = "0x8000001"
             variables.Variables[currentDisk.."ActivityOnSelect"] = "100,250,100"
             variables.Variables[currentDisk.."ActivityOffSelect"] = "#BackgroundColorDimMin#"
             refreshGenerated = true
@@ -86,7 +84,7 @@ function Initialize()
         SKIN:Bang('!RefreshGroup Disks')
     end
 
-    height = 81+disksTotal*121+5
+    height = 81+disksTotal*75+5
     SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
     SKIN:Bang("!UpdateMeter SkinSizing")
 end

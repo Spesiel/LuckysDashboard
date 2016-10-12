@@ -158,8 +158,6 @@ function GenerateDisksFile()
     variables["Disk1ActivityInstance"] = "0x0"
     variables["Disk1ActivityReadPercentId"] = "0x7000000"
     variables["Disk1ActivityWritePercentId"] = "0x7000001"
-    variables["Disk1ActivityReadRateId"] = "0x8000000"
-    variables["Disk1ActivityWriteRateId"] = "0x8000001"
     variables["Disk1ActivityOnSelect"] = "100,250,100"
     variables["Disk1ActivityOffSelect"] = "#BackgroundColorDimMin#"
 

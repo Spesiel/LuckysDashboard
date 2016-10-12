@@ -237,36 +237,6 @@ DefaultValue=#|ActivityWritePercentId#
 Command1=!WriteKeyValue Variables |ActivityWritePercentId "$UserInput$" "#@#disks.var"
 Command2=!RefreshGroup Disks
 
-[|ActivityReadRateIdInputMeasure]
-Measure=Plugin
-Plugin=InputText
-SolidColor=#ForegroundColor#
-FontColor=#BackgroundColor#
-FontFace=Seqoe UI
-FontSize=12
-X=[|SmartSensorIdInput:X]
-Y=[|SmartSensorIdInput:Y]
-W=[|SmartSensorIdInput:W]
-H=[|SmartSensorIdInput:H]
-DefaultValue=#|ActivityReadRateId#
-Command1=!WriteKeyValue Variables |ActivityReadRateId "$UserInput$" "#@#disks.var"
-Command2=!RefreshGroup Disks
-
-[|ActivityWriteRateIdInputMeasure]
-Measure=Plugin
-Plugin=InputText
-SolidColor=#ForegroundColor#
-FontColor=#BackgroundColor#
-FontFace=Seqoe UI
-FontSize=12
-X=[|SmartSensorIdInput:X]
-Y=[|SmartSensorIdInput:Y]
-W=[|SmartSensorIdInput:W]
-H=[|SmartSensorIdInput:H]
-DefaultValue=#|ActivityWriteRateId#
-Command1=!WriteKeyValue Variables |ActivityWriteRateId "$UserInput$" "#@#disks.var"
-Command2=!RefreshGroup Disks
-
 ;------------------------------------------------------------------------------
 ;------------------------------------------------------------------------------
 
@@ -373,51 +343,3 @@ AntiAlias=1
 SolidColor=#ForegroundColorDimMin#
 Text=#|ActivityWritePercentId#
 LeftMouseUpAction=!CommandMeasure "|ActivityUsageWriteInputMeasure" "ExecuteBatch 1-3"
-
-[|ActivityRateReadLabel]
-Meter=String
-MeterStyle=TextStyle
-StringStyle=Normal
-X=324
-Y=5R
-W=90
-H=19
-FontSize=10
-Text=Read Rate
-
-[|ActivityRateReadInput]
-Meter=String
-X=409
-Y=-1r
-W=95
-H=19
-FontSize=12
-FontColor=#ForegroundColor#
-AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
-Text=#|ActivityReadRateId#
-LeftMouseUpAction=!CommandMeasure "|ActivityRateReadInputMeasure" "ExecuteBatch 1-3"
-
-[|ActivityRateWriteLabel]
-Meter=String
-MeterStyle=TextStyle
-StringStyle=Normal
-X=324
-Y=5R
-W=90
-H=19
-FontSize=10
-Text=Write Rate
-
-[|ActivityRateWriteInput]
-Meter=String
-X=409
-Y=-1r
-W=95
-H=19
-FontSize=12
-FontColor=#ForegroundColor#
-AntiAlias=1
-SolidColor=#ForegroundColorDimMin#
-Text=#|ActivityWriteRateId#
-LeftMouseUpAction=!CommandMeasure "|ActivityRateWriteInputMeasure" "ExecuteBatch 1-3"
