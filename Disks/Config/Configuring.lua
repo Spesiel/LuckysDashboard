@@ -57,7 +57,7 @@ function Initialize()
             refreshGenerated = true
         end
         
-        for key,value in ipairs(template) do
+        for _,value in ipairs(template) do
             if string.find(value,"|") then
                 local str = string.gsub(value,"|",currentDisk)
                 table.insert(content,str)
@@ -80,7 +80,6 @@ function Initialize()
         WriteIni(variables,SKIN:ReplaceVariables("#@#").."disks.var")
         WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
-        --SKIN:Bang('!Updategroup Disks')
         SKIN:Bang('!RefreshGroup Disks')
     end
 

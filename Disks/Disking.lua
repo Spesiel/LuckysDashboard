@@ -23,7 +23,7 @@ function Initialize()
     local content = {}
     for loop=1,disksTotal,1 do
         local currentDisk = ("Disk%s"):format(loop)
-        for key,value in ipairs(template) do
+        for _,value in ipairs(template) do
             if string.find(value,"|") then
                 local str = string.gsub(value,"|",currentDisk)
                 table.insert(content,str)
