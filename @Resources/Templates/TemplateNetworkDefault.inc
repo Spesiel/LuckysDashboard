@@ -1,0 +1,2 @@
+NetworkMeasureInBytes=1
+NetworkMeasureCumulative=0

@@ -10,3 +10,4 @@
     ScaleDate=1
     ScaleVolume=1
     ScaleDisks=1
+    ScaleNetwork=1

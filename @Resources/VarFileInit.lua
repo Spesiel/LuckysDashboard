@@ -88,6 +88,26 @@ function GenerateDisksFile()
     return true
 end
 
+-- network.var
+function GenerateNetworkFile()
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
+
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."network.var")) then return false end
+    local network = {}
+
+    local templateNetworkVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateNetworkDefault.inc")
+    network = GenerateMetadata(network,"NetworkSettings","Lucky Penny","Variables for the network","0.0.1")
+    table.insert(network,"[Variables]")
+
+    for _,value in ipairs(templateNetworkVars) do
+        table.insert(network,value)
+    end
+
+    WriteFile(table.concat(network,"\n"),SKIN:ReplaceVariables("#@#").."network.var")
+
+    return true
+end
+
 function GenerateMetadata(inputtable,name,author,information,version)
 	table.insert(inputtable,"[Metadata]")
 	table.insert(inputtable,"Name="..name)
