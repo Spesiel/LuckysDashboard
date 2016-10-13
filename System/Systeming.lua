@@ -29,13 +29,13 @@ function Initialize()
             -- position the meters depending if average is shown or not
             if hideAverageTextBar=="0" then
                 if (loop==0) and (value:find("Y=xr")) then
-                    value = "Y=-3r"
+                    value = "Y=([CpuAllMeter:Y]+33)"
                 elseif (loop>0) and (value:find("Y=xr")) then
                     value = "Y=4R"
                 end
             else
                 if (loop==0) and (value:find("Y=xr")) then
-                    value = "Y=-18r"
+                    value = "Y=([CpuTitle:Y]+16)"
                 elseif (loop>0) and (value:find("Y=xr")) then
                     value = "Y=4R"
                 end
