@@ -13,7 +13,7 @@ function Initialize()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
     
     local cpuCount = SKIN:GetVariable("CpuCount")
-    local hideAverage = SKIN:GetVariable("SystemCpuAverage")
+    local hideAverageTextBar = SKIN:GetVariable("SystemCpuAverageTextBar")
     local showTemp = SKIN:GetVariable("SystemTemp")
 
     -- Loads the template
@@ -27,7 +27,7 @@ function Initialize()
     for loop=0,cpuCount-1,1 do
         for _,value in ipairs(template) do
             -- position the meters depending if average is shown or not
-            if hideAverage=="0" then
+            if hideAverageTextBar=="0" then
                 if (loop==0) and (value:find("Y=xr")) then
                     value = "Y=-3r"
                 elseif (loop>0) and (value:find("Y=xr")) then

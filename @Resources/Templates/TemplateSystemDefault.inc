@@ -1,9 +1,9 @@
 SystemUptime=0
 SystemUptimeShowSelect=#BackdropColor#
 SystemUptimeHideSelect=#ColorClear#
-SystemCpuAverage=0
-SystemCpuAverageShowSelect=#BackdropColor#
-SystemCpuAverageHideSelect=#ColorClear#
+SystemCpuAverageTextBar=0
+SystemCpuAverageTextBarShowSelect=#BackdropColor#
+SystemCpuAverageTextBarHideSelect=#ColorClear#
 SystemTempAverage=0
 SystemTempAverageOnSelect=100,250,100
 SystemTempAverageOffSelect=#BackdropColor#
