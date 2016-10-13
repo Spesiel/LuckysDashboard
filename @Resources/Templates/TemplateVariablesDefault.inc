@@ -11,3 +11,4 @@
     ScaleVolume=1
     ScaleDisks=1
     ScaleNetwork=1
+    ScaleSystem=1

@@ -2,6 +2,8 @@
 @Resources/clocks.var
 @Resources/disks.var
 @Resources/network.var
+@Resources/system.var
 Disks/Config/generated.inc
 Disks/generated.inc
 Themes/generated.inc
+System/generatedCpuMeters.inc

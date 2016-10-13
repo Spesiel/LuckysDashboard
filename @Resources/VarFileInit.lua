@@ -17,8 +17,13 @@ function Initialize()
     local doRefreshForClocks = GenerateClocksFile()
     -- disks.var
     local doRefreshForDisks = GenerateDisksFile()
+    -- network.var
+    local doRefreshForNetwork = GenerateNetworkFile()
+    -- system.var
+    local doRefreshForSystem = GenerateSystemFile()
     
-    if doRefreshForVariables or doRefreshForClocks or doRefreshForDisks then SKIN:Bang('!Refresh') end
+    if doRefreshForVariables or doRefreshForClocks or doRefreshForDisks or doRefreshForNetwork or doRefreshForSystem then
+        SKIN:Bang('!Refresh') end
 end
 
 -- variables.var
@@ -68,15 +73,15 @@ function GenerateDisksFile()
     if next(ReadIni(SKIN:ReplaceVariables("#@#").."disks.var")) then return false end
     local disks = {}
 
-    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateDisksDefault.inc")
+    local templateSystemVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateDisksDefault.inc")
     disks = GenerateMetadata(disks,"DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
     table.insert(disks,"[Variables]")
     table.insert(disks,"DisksTotal=1")
 
-    for _,value in ipairs(templateDiskVars) do
+    for _,value in ipairs(templateSystemVars) do
         local str = ""
         if value:find("|") then
-            str = value:gsub("|","1")
+            str = value:gsub("|","Disk1")
         else
             str = value
         end
@@ -104,6 +109,32 @@ function GenerateNetworkFile()
     end
 
     WriteFile(table.concat(network,"\n"),SKIN:ReplaceVariables("#@#").."network.var")
+
+    return true
+end
+
+-- system.var
+function GenerateSystemFile()
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
+
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."system.var")) then return false end
+    local system = {}
+
+    local templateSystemVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateSystemDefault.inc")
+    system = GenerateMetadata(system,"SystemSettings","Lucky Penny","Variables for the system","0.0.1")
+    table.insert(system,"[Variables]")
+
+    for _,value in ipairs(templateSystemVars) do
+        local str = ""
+        if value:find("|") then
+            str = value:gsub("|","0")
+        else
+            str = value
+        end
+        table.insert(system,str)
+    end
+
+    WriteFile(table.concat(system,"\n"),SKIN:ReplaceVariables("#@#").."system.var")
 
     return true
 end

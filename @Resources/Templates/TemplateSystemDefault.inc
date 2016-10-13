@@ -1,0 +1,12 @@
+SystemUptime=0
+SystemUptimeShowSelect=#BackdropColor#
+SystemUptimeHideSelect=#ColorClear#
+SystemCpuAverage=0
+SystemCpuAverageShowSelect=#BackdropColor#
+SystemCpuAverageHideSelect=#ColorClear#
+SystemTempAverage=0
+SystemTempAverageOnSelect=100,250,100
+SystemTempAverageOffSelect=#BackdropColor#
+SystemTempSensorId=0xf0000400
+SystemTempInstance=0x0
+SystemTemp|TemperatureId=0x1000000
