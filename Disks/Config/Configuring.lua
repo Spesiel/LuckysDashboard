@@ -19,8 +19,8 @@ function Initialize()
     local refreshGenerated = false
     if next(generated)==nil then refreshGenerated = true end
 
-    local templateDiskMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."Templates\TemplateDiskMeters.inc")
-    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\TemplateDisksDefault.inc")
+    local templateDiskMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateDiskMeters.inc")
+    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateDisksDefault.inc")
 
     -- loop through the data for each disk
     local variables = {}

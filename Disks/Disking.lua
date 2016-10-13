@@ -17,7 +17,7 @@ function Initialize()
 
     -- Loads the template
     local template = {}
-    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."Templates\TemplateDiskMeters.inc")
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateDiskMeters.inc")
 
     -- loop through the data for each disk
     local content = {}
