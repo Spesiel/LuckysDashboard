@@ -53,7 +53,7 @@ function Initialize()
 
     -- Loads the template
     local template = {}
-    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateButtonMeter.inc")
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."Templates\TemplateButtonMeter.inc")
 	
     -- loop through the different color schemes (themes) in the txt file
     local currentTheme = 0

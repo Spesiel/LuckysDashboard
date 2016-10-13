@@ -28,7 +28,7 @@ function GenerateVariablesFile()
     if next(ReadIni(SKIN:ReplaceVariables("#@#").."variables.var")) then return false end
     local variables = {}
 
-    local templateVariableVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateVariablesDefault.inc")
+    local templateVariableVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\TemplateVariablesDefault.inc")
     variables = GenerateMetadata(variables,"Variables","Lucky Penny","Variables for the whole skin","0.0.1")
     table.insert(variables,"[Variables]")
 
@@ -48,7 +48,7 @@ function GenerateClocksFile()
     if next(ReadIni(SKIN:ReplaceVariables("#@#").."clocks.var")) then return false end
     local clocks = {}
 
-    local templateClocksVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateClocksDefault.inc")
+    local templateClocksVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\TemplateClocksDefault.inc")
     clocks = GenerateMetadata(clocks,"ClocksSettings","Lucky Penny","Variables for the clocks","0.0.1")
     table.insert(clocks,"[Variables]")
 
@@ -68,7 +68,7 @@ function GenerateDisksFile()
     if next(ReadIni(SKIN:ReplaceVariables("#@#").."disks.var")) then return false end
     local disks = {}
 
-    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateDisksDefault.inc")
+    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\TemplateDisksDefault.inc")
     disks = GenerateMetadata(disks,"DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
     table.insert(disks,"[Variables]")
     table.insert(disks,"DisksTotal=1")
