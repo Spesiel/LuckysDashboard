@@ -40,7 +40,6 @@ end
 
 -- Load all schemes from file
 function Initialize()
-    -- Loads the Read and Write methods for ini files
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
     local refreshGenerated = false

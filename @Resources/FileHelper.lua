@@ -13,20 +13,20 @@
 
 
 function ReadIni(filepath)
-	local file = assert(io.open(filepath, "r"), "Unable to open " .. filepath)
+	local file = assert(io.open(filepath, "r"), "ReadIni: unable to open " .. filepath)
 	local table, section = {}
 	local num = 0
 	for line in file:lines() do
 		num = num + 1
 		if not line:match("^%s-;") then
-			local key, command = line:match("^([^=]+)=(.+)")
+			local key, command = line:match("^([^=]+)=(.*)")
 			if line:match("^%s-%[.+") then
 				section = line:match("^%s-%[([^%]]+)")
 				if not table[section] then table[section] = {} end
 			elseif key and command and section then
 				table[section][key:match("^s*(%S*)%s*$")] = command:match("^s*(.-)%s*$")
 			elseif #line > 0 and section and not key or command then
-				print(num .. ": Invalid property or value.")
+				print("ReadIni: " .. filepath .. " line " .. num .. ": Invalid property or value.")
 			end
 		end
 	end
@@ -38,7 +38,7 @@ end
 function WriteIni(inputtable, filepath)
 	assert(type(inputtable) == "table", ("WriteIni must receive a table. Received %s instead."):format(type(inputtable)))
 
-	local file = assert(io.open(filepath, "w+"), "Unable to open " .. filepath)
+	local file = assert(io.open(filepath, "w+"), "WriteIni: Unable to open " .. filepath)
 
     if inputtable.Metadata ~= nil then
         file:write("[Metadata]","\n")
@@ -69,8 +69,8 @@ function WriteIni(inputtable, filepath)
 end
 
 function ReadFile(filepath)
-	local file = assert(io.open(filepath,"r"), "ReadFile: unable to open " .. filepath)
-	if not file then return	end
+	local file = assert(io.open(filepath,"r"), "ReadFile: Unable to open " .. filepath)
+	if file==nil then return {} end
 
 	local content = {}
 	for line in file:lines() do table.insert(content,line) end
@@ -82,4 +82,14 @@ function WriteFile(inputtable,filepath)
 	local file = assert(io.open(filepath, "w+"), "WriteFile: Unable to open " .. filepath)
 	file:write(inputtable)
 	file:close()
+end
+
+function GenerateMetadata(inputtable,name,author,information,version)
+	table.insert(inputtable,"[Metadata]")
+	table.insert(inputtable,"Name="..name)
+    table.insert(inputtable,"Author="..author)
+    table.insert(inputtable,"Information="..information)
+    table.insert(inputtable,"License=Creative Commons BY-NC-SA 3.0")
+    table.insert(inputtable,"Version="..version.."\n")
+    return inputtable
 end

@@ -147,6 +147,7 @@ PerfMonInstance=#|Letter#:
 [|ActivityReadRateLabel]
 Meter=String
 MeterStyle=TextStyle
+StringStyle=Normal
 FontSize=7
 MeasureName=|ActivityReadRateMeasure
 X=73
@@ -188,6 +189,7 @@ PerfMonInstance=#|Letter#:
 [|ActivityWriteRateLabel]
 Meter=String
 MeterStyle=TextStyle
+StringStyle=Normal
 FontSize=7
 MeasureName=|ActivityWriteRateMeasure
 X=73

@@ -1,5 +1,5 @@
 ------- Metadata --------------------------------------------------------------
--- Theming
+-- VarFileInit
 -- Author: Lucky Penny
 -- Description: Creates all variables files with default values.
 -- License: Creative Commons BY-NC-SA 3.0
@@ -24,29 +24,19 @@ end
 -- variables.var
 function GenerateVariablesFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-    local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."variables.var","r")
-    if testIfExist then io.close(testIfExist) return false end
-    local variables = io.open(SKIN:ReplaceVariables("#@#").."variables.var","w+")
 
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."variables.var")) then return false end
     local variables = {}
-    variables["Metadata"] = GenerateMetadata("Variables","Lucky Penny","Variables for the whole skin","0.0.1")
 
-    local content = {}
-    content[";1"]="\n;------------------------------------------------------------------------------"
-    content[";2"]="; Colors from the color scheme\n"
-    content["BackgroundColor"]="0,0,0,95"
-    content["TextColor"]="255,255,255"
-    content["MeterColor"]="255,255,255,150"
-    content["BackdropColor"]="255,255,255,50"
-    content[";3"]="\n;------------------------------------------------------------------------------"
-    content[";4"]="; Scales\n"
-    content["ScaleClock"]=1
-    content["ScaleDate"]=1
-    content["ScaleVolume"]=1
-    content["ScaleDisks"]=1
-    variables["Variables"] = content
+    local templateVariableVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateVariablesDefault.inc")
+    variables = GenerateMetadata(variables,"Variables","Lucky Penny","Variables for the whole skin","0.0.1")
+    table.insert(variables,"[Variables]")
 
-    WriteIni(variables,SKIN:ReplaceVariables("#@#").."variables.var")
+    for _,value in ipairs(templateVariableVars) do
+        table.insert(variables,value)
+    end
+
+    WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."variables.var")
 
     return true
 end
@@ -54,81 +44,19 @@ end
 -- clocks.var
 function GenerateClocksFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-    local testIfExist=io.open(SKIN:ReplaceVariables("#@#").."clocks.var","r")
-    if testIfExist then io.close(testIfExist) return false end
-    local clocks = io.open(SKIN:ReplaceVariables("#@#").."clocks.var","w+")
 
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."clocks.var")) then return false end
     local clocks = {}
-    clocks["Metadata"] = GenerateMetadata("ClocksSettings","Lucky Penny","Variables for the clocks","0.0.1")
 
-    local content = {}
+    local templateClocksVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateClocksDefault.inc")
+    clocks = GenerateMetadata(clocks,"ClocksSettings","Lucky Penny","Variables for the clocks","0.0.1")
+    table.insert(clocks,"[Variables]")
 
-    content[";1"]="\n;------------------------------------------------------------------------------"
-    content[";2"]="; Clocks individual variables\n"
-    content[";3"]="; Clock1 variables\n"
-    content["Clock1_Label"]="PST"
-    content["Clock1_12or24"]="I"
-    content["Clock1_Timezone"]=-8
-    content["Clock1_DST"]=1
-    content[";4"]="; Clock2 variables\n"
-    content["Clock2_Label"]="France"
-    content["Clock2_12or24"]="I"
-    content["Clock2_Timezone"]=1
-    content["Clock2_DST"]=1
-    content[";5"]="; Clock3 variables\n"
-    content["Clock3_Label"]="CST"
-    content["Clock3_12or24"]="I"
-    content["Clock3_Timezone"]=-6
-    content["Clock3_DST"]=1
-    content[";6"]="; Clock4 variables\n"
-    content["Clock4_Label"]="EST"
-    content["Clock4_12or24"]="I"
-    content["Clock4_Timezone"]=-5
-    content["Clock4_DST"]=1
-    content[";7"]="\n;------------------------------------------------------------------------------"
-    content[";8"]="; DateAndClocks individual variables\n"
-    content[";9"]="; DateAndClock1 variables\n"
-    content["DateAndClock1_Position_Date"]=62
-    content["DateAndClock1_Position_Time"]=187
-    content[";11"]="; DateAndClock2 variables\n"
-    content["DateAndClock2_Position_Date"]=62
-    content["DateAndClock2_Position_Time"]=187
-    content[";12"]="; DateAndClock3 variables\n"
-    content["DateAndClock3_Position_Date"]=62
-    content["DateAndClock3_Position_Time"]=187
-    content[";13"]="; DateAndClock4 variables\n"
-    content["DateAndClock4_Position_Date"]=62
-    content["DateAndClock4_Position_Time"]=187
-    content[";14"]="\n;------------------------------------------------------------------------------"
-    content[";15"]="; Used by the configurators\n"
-    content["Clock1_12Select"]="#BackdropColor#"
-    content["Clock1_24Select"]="#ColorClear#"
-    content["Clock1_DSTOnSelect"]="#BackdropColor#"
-    content["Clock1_DSTOffSelect"]="#BackdropColor#"
-    content["DateAndClock1_DateLeft"]="#BackdropColor#"
-    content["DateAndClock1_DateRight"]="#ColorClear#"
-    content["Clock2_12Select"]="#BackdropColor#"
-    content["Clock2_24Select"]="#ColorClear#"
-    content["Clock2_DSTOnSelect"]="#BackdropColor#"
-    content["Clock2_DSTOffSelect"]="#BackdropColor#"
-    content["DateAndClock2_DateLeft"]="#BackdropColor#"
-    content["DateAndClock2_DateRight"]="#ColorClear#"
-    content["Clock3_12Select"]="#BackdropColor#"
-    content["Clock3_24Select"]="#ColorClear#"
-    content["Clock3_DSTOnSelect"]="#BackdropColor#"
-    content["Clock3_DSTOffSelect"]="#BackdropColor#"
-    content["DateAndClock3_DateLeft"]="#BackdropColor#"
-    content["DateAndClock3_DateRight"]="#ColorClear#"
-    content["Clock4_12Select"]="#BackdropColor#"
-    content["Clock4_24Select"]="#ColorClear#"
-    content["Clock4_DSTOnSelect"]="#BackdropColor#"
-    content["Clock4_DSTOffSelect"]="#BackdropColor#"
-    content["DateAndClock4_DateLeft"]="#BackdropColor#"
-    content["DateAndClock4_DateRight"]="#ColorClear#"
+    for _,value in ipairs(templateClocksVars) do
+        table.insert(clocks,value)
+    end
 
-    variables["Variables"] = content
-
-    WriteIni(variables,SKIN:ReplaceVariables("#@#").."clocks.var")
+    WriteFile(table.concat(clocks,"\n"),SKIN:ReplaceVariables("#@#").."clocks.var")
 
     return true
 end
@@ -136,45 +64,36 @@ end
 -- disks.var
 function GenerateDisksFile()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-    local testIfExist=io.open(SKIN:ReplaceVariables("#@#")..'disks.var',"r")
-    if testIfExist then io.close(testIfExist) return false end
+
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."disks.var")) then return false end
     local disks = {}
-    disks["Metadata"] = GenerateMetadata("DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
 
-    local variables = {}
-    variables[";1"]="\n;------------------------------------------------------------------------------"
-    variables[";2"]="; Disks common variables\n"
-    variables["DisksTotal"]=1
-    
-    variables["Disk1Letter"]= "C"
-    variables["Disk1HideTemperature"] = "0"
-    variables["Disk1SmartSensorId"] = "0xf0000100"
-    variables["Disk1SmartInstance"] = "0x0"
-    variables["Disk1SmartTemperatureId"] = "0x1000000"
-    variables["Disk1SmartOnSelect"] = "100,250,100"
-    variables["Disk1SmartOffSelect"] = "#BackgroundColorDimMin#"
-    variables["Disk1HideActivity"] = "0"
-    variables["Disk1ActivitySensorId"] = "0xf0000101"
-    variables["Disk1ActivityInstance"] = "0x0"
-    variables["Disk1ActivityReadPercentId"] = "0x7000000"
-    variables["Disk1ActivityWritePercentId"] = "0x7000001"
-    variables["Disk1ActivityOnSelect"] = "100,250,100"
-    variables["Disk1ActivityOffSelect"] = "#BackgroundColorDimMin#"
+    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."TemplateDisksDefault.inc")
+    disks = GenerateMetadata(disks,"DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
+    table.insert(disks,"[Variables]")
+    table.insert(disks,"DisksTotal=1")
 
-    disks["Variables"] = variables
+    for _,value in ipairs(templateDiskVars) do
+        local str = ""
+        if value:find("|") then
+            str = value:gsub("|","1")
+        else
+            str = value
+        end
+        table.insert(disks,str)
+    end
 
-    WriteIni(disks,SKIN:ReplaceVariables("#@#").."disks.var")
+    WriteFile(table.concat(disks,"\n"),SKIN:ReplaceVariables("#@#").."disks.var")
 
     return true
 end
 
--- Generate Metadata
-function GenerateMetadata(name,author,information,version)
-    local metadata = {}
-    metadata["Name"]=name
-    metadata["Author"]=author
-    metadata["Information"]=information
-    metadata["License"]="Creative Commons BY-NC-SA 3.0"
-    metadata["Version"]=version
-    return metadata
+function GenerateMetadata(inputtable,name,author,information,version)
+	table.insert(inputtable,"[Metadata]")
+	table.insert(inputtable,"Name="..name)
+    table.insert(inputtable,"Author="..author)
+    table.insert(inputtable,"Information="..information)
+    table.insert(inputtable,"License=Creative Commons BY-NC-SA 3.0")
+    table.insert(inputtable,"Version="..version.."\n")
+    return inputtable
 end

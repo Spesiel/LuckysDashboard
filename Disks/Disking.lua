@@ -11,8 +11,8 @@
 
 -- Load all schemes from file
 function Initialize()
-    -- Loads the Read and Write methods for ini files
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
+    
     local disksTotal = SKIN:GetVariable("DisksTotal")
 
     -- Loads the template

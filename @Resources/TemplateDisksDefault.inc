@@ -1,0 +1,14 @@
+|Letter=C
+|HideTemperature=0
+|SmartOnSelect=100,250,100
+|SmartOffSelect=#BackgroundColorDimMin#
+|SmartSensorId=0xf0000100
+|SmartInstance=0x0
+|SmartTemperatureId=0x1000000
+|HideActivity=0
+|ActivitySensorId=0xf0000101
+|ActivityInstance=0x0
+|ActivityReadPercentId=0x7000000
+|ActivityWritePercentId=0x7000001
+|ActivityOnSelect=100,250,100
+|ActivityOffSelect=#BackgroundColorDimMin#
