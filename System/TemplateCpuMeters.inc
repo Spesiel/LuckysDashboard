@@ -35,7 +35,7 @@ MeasureName=Cpu|TempCoreValue
 MeasureName2=CpuTempCoreUnits
 Text=%1%2
 TransformationMatrix=#Scaling#
-Hidden=#SystemTemp#
+Hidden=#SystemTempPerCore#
 
 [Cpu|Bar]
 Meter=Bar

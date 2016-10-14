@@ -14,7 +14,9 @@ function Initialize()
     
     local cpuCount = SKIN:GetVariable("CpuCount")
     local hideAverageTextBar = SKIN:GetVariable("SystemCpuAverageTextBar")
-    local showTemp = SKIN:GetVariable("SystemTemp")
+    local hideFan = SKIN:GetVariable("SystemCpuFan")
+    local hideClock = SKIN:GetVariable("SystemCpuClock")
+    local showTemp = SKIN:GetVariable("SystemTempPerCore")
 
     -- Loads the template
     local template = {}
@@ -26,17 +28,19 @@ function Initialize()
     local content = {}
     for loop=0,cpuCount-1,1 do
         for _,value in ipairs(template) do
-            -- position the meters depending if average is shown or not
-            if hideAverageTextBar=="0" then
-                if (loop==0) and (value:find("Y=xr")) then
-                    value = "Y=([CpuAllMeter:Y]+33)"
-                elseif (loop>0) and (value:find("Y=xr")) then
-                    value = "Y=4R"
-                end
-            else
-                if (loop==0) and (value:find("Y=xr")) then
-                    value = "Y=([CpuTitle:Y]+16)"
-                elseif (loop>0) and (value:find("Y=xr")) then
+            -- position the meters depending on what is shown and hidden
+            if (value:find("Y=xr")) then
+                if (loop==0) then
+                    if (hideAverageTextBar=="0") then
+                        value = "Y=([CpuAllMeter:Y]+33)"
+                    else
+                        value = "Y=([CpuTitle:Y]+16)"
+                    end
+                    if (hideFan=="0") or (hideClock=="0") then
+                        value = "Y=([CpuAllMeter:Y]+49)"
+                    end
+                    print(value)
+                else
                     value = "Y=4R"
                 end
             end

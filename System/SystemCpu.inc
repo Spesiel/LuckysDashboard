@@ -48,9 +48,82 @@ MeasureName=CpuAllMeasure
 TransformationMatrix=#Scaling#
 Hidden=#SystemCpuAverageTextBar#
 
+;------------------------------------------------------------------------------
+; CPU fan informations
+
+[CpuFanMeasure]
+Measure=Plugin
+Plugin=HWiNFO.dll
+HWiNFOSensorId=#SystemFanSensorId#
+HWiNFOSensorInstance=#SystemFanInstance#
+HWiNFOEntryId=#SystemFanEntryId#
+HWiNFOType=CurrentValue
+Disabled=#SystemCpuFan#
+
+[CpuFanUnit]
+Measure=Plugin
+Plugin=HWiNFO.dll
+HWiNFOSensorId=#SystemFanSensorId#
+HWiNFOSensorInstance=#SystemFanInstance#
+HWiNFOEntryId=#SystemFanEntryId#
+HWiNFOType=Units
+Substitute="":"  .","RPM":"rpm"
+UpdateDivider=-1
+Disabled=#SystemCpuFan#
+
+[CpuFanMeter]
+Meter=String
+MeterStyle=TextStyle
+StringAlign=Right
+FontSize=10
+X=120
+Y=([CpuTitle:Y]+35)
+MeasureName=CpuFanMeasure
+MeasureName2=CpuFanUnit
+Text=%1 %2
+Hidden=#SystemCpuFan#
+
+;------------------------------------------------------------------------------
+; CPU clock informations
+
+[CpuClockMeasure]
+Measure=Plugin
+Plugin=HWiNFO.dll
+HWiNFOSensorId=#SystemClockSensorId#
+HWiNFOSensorInstance=#SystemClockInstance#
+HWiNFOEntryId=#SystemClockEntryId#
+HWiNFOType=CurrentValue
+Disabled=#SystemCpuClock#
+
+[CpuClockUnit]
+Measure=Plugin
+Plugin=HWiNFO.dll
+HWiNFOSensorId=#SystemClockSensorId#
+HWiNFOSensorInstance=#SystemClockInstance#
+HWiNFOEntryId=#SystemClockEntryId#
+HWiNFOType=Units
+Substitute="":"  ."
+UpdateDivider=-1
+Disabled=#SystemCpuClock#
+
+[CpuClockMeter]
+Meter=String
+MeterStyle=TextStyle
+StringAlign=Right
+FontSize=10
+X=247
+Y=([CpuTitle:Y]+35)
+MeasureName=CpuClockMeasure
+MeasureName2=CpuClockUnit
+Text=%1 %2
+Hidden=#SystemCpuClock#
+
+;------------------------------------------------------------------------------
+; CPU temperature
+
 [CpuTempDisabled]
 Measure=Calc
-Formula=#SystemTemp# + #SystemTempAverage# <2 ? 0:1
+Formula=#SystemTempPerCore# + #SystemTempAverage# <2 ? 0:1
 
 [CpuTempCoreUnits]
 Measure=Plugin
