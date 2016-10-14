@@ -39,3 +39,13 @@ BackgroundColor=0,0,0,165
 TextColor=0,255,0,165
 MeterColor=0,128,0,150
 BackdropColor=255,255,255,50
+
+[(???)]
+Name=(???)
+Description=http://www.colourlovers.com/palette/629637
+Author=sugar!
+BackgroundColor=254,67,101,95
+TextColor=131,175,155
+MeterColor=252,157,154,175
+BackdropColor=249,205,173,95
+5thColor=200,200,169
