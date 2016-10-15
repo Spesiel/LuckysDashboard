@@ -61,7 +61,6 @@ function Initialize()
     local content = {}
     for title,pair in pairs(colorSchemes) do
         currentTheme = currentTheme + 1
-        local valueY = ""
         for _,value in ipairs(template) do
             local str = ""
             -- Switch on the current line to change what needs to be changed
@@ -69,14 +68,11 @@ function Initialize()
             elseif value:find("X=")                 then
                         currentLineLength = currentLineLength + 10*((pair.Name):len())
                         if currentTheme>1 and currentLineLength<760 then
-                            str = value.."10R"
-                            valueY="r"
+                            str = value.."10R Y=r"
                         else
                             currentLineLength = 30 + 10*((pair.Name):len())
-                            str = value.."20"
-                            valueY="10R"
+                            str = value.."20 Y=10R"
                         end
-            elseif value:find("Y=")                 then str = value..valueY
             elseif value:find("SolidColor=")        then str = value..pair.BackgroundColor
             elseif value:find("FontColor=")         then str = value..pair.TextColor
             elseif value:find("Text=")              then str = value..pair.Name

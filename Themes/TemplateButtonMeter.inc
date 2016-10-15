@@ -4,7 +4,6 @@ MeterStyle=TextStyle
 Padding=10,10,10,10
 FontSize=10
 X=
-Y=
 SolidColor=
 FontColor=
 Text=
