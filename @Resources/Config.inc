@@ -10,18 +10,15 @@ MouseOverAction=!ShowMeter MeterConfig
 MouseLeaveAction=!HideMeter MeterConfig
 
 [MeterConfig]
-Meter=String
-X=([SkinSizing:W]-5)
+Meter=Image
+X=([SkinSizing:W]-20)
 Y=5
-W=8
-H=8
-StringAlign=Right
-FontSize=10
-FontColor=#TextColor#
-Text=*
-AntiAlias=1
-DynamicVariables=1
-UpdateDivider=-1
+W=15
+H=15
+ImageName=#@#\Icons\settings.png
 ToolTipText=Settings
+ColorMatrix1=1;0;0;-1;0
+ColorMatrix2=0;1;0;-1;0
+ColorMatrix3=0;0;1;-1;0
 LeftMouseUpAction=[!ToggleConfig "#CurrentConfig#\Config" "Config.ini"]
 Hidden=1
