@@ -43,10 +43,8 @@ function Initialize()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
     local refreshGenerated = false
-    local testIfExist=io.open(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc","r")
-    if testIfExist then
-        io.close(testIfExist) generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
-        else refreshGenerated = true end
+    local generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    if next(generated)==nil then refreshGenerated = true end
 
     -- load ini file
 	local colorSchemes = ReadIni(SKIN:ReplaceVariables("#CURRENTPATH#")..'ColorSchemes.txt')
@@ -63,28 +61,40 @@ function Initialize()
         currentTheme = currentTheme + 1
         for _,value in ipairs(template) do
             local str = ""
+            local st2 = ""
             -- Switch on the current line to change what needs to be changed
             if     value:find("Theme_")             then str = value:gsub("|",title)
+                                                         if generated["Theme_"..title]==nil then refreshGenerated=true end
             elseif value:find("X=")                 then
                         currentLineLength = currentLineLength + 10*((pair.Name):len())
                         if currentTheme>1 and currentLineLength<760 then
-                            str = value.."10R Y=r"
+                            str = value.."10R"
+                            st2 = "Y=r"
                         else
                             currentLineLength = 30 + 10*((pair.Name):len())
-                            str = value.."20 Y=10R"
+                            str = value.."20"
+                            st2 = "Y=10R"
                         end
             elseif value:find("SolidColor=")        then str = value..pair.BackgroundColor
             elseif value:find("FontColor=")         then str = value..pair.TextColor
             elseif value:find("Text=")              then str = value..pair.Name
             elseif value:find("MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
             elseif value:find("LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
+                                                         if (not refreshGenerated) and (generated["Theme_"..title]["LeftMouseUpAction"])~=str:sub(19) then refreshGenerated=true end
             else str = value end
 
             table.insert(content,str)
+            if str:find("X=") then table.insert(content,st2) end
         end
+        if not refreshGenerated then generated["Theme_"..title]=nil end
     end
 
-    if refreshGenerated then
+    local generatedLeft = 0
+    for k,v in pairs(generated) do
+        generatedLeft = generatedLeft + 1
+    end
+
+    if (refreshGenerated) or (generatedLeft>0) then
         WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
         SKIN:Bang('!RefreshGroup Configuration')
     end
