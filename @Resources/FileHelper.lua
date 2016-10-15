@@ -13,7 +13,8 @@
 
 
 function ReadIni(filepath)
-	local file = assert(io.open(filepath, "r"), "ReadIni: unable to open " .. filepath)
+	local file = io.open(filepath,"r")
+	if file==nil then print("ReadIni: unable to open " .. filepath) return {} end
 	local table, section = {}
 	local num = 0
 	for line in file:lines() do
@@ -69,8 +70,8 @@ function WriteIni(inputtable, filepath)
 end
 
 function ReadFile(filepath)
-	local file = assert(io.open(filepath,"r"), "ReadFile: Unable to open " .. filepath)
-	if file==nil then return {} end
+	local file = io.open(filepath,"r")
+	if file==nil then print("ReadFile: Unable to open " .. filepath) return {} end
 
 	local content = {}
 	for line in file:lines() do table.insert(content,line) end
