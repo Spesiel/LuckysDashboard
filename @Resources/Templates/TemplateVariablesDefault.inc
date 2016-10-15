@@ -12,4 +12,5 @@
     ScaleDisks=1
     ScaleNetwork=1
     ScaleUptime=1
+    ScaleFortune=1
     ScaleSystem=1
