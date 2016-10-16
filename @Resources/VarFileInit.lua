@@ -19,10 +19,17 @@ function Initialize()
     local doRefreshForDisks = GenerateDisksFile()
     -- network.var
     local doRefreshForNetwork = GenerateNetworkFile()
+    -- fortune.var
+    local doRefreshForFortune = GenerateFortuneFile()
     -- system.var
     local doRefreshForSystem = GenerateSystemFile()
     
-    if doRefreshForVariables or doRefreshForClocks or doRefreshForDisks or doRefreshForNetwork or doRefreshForSystem then
+    if doRefreshForVariables
+     or doRefreshForClocks
+     or doRefreshForDisks
+     or doRefreshForNetwork
+     or doRefreshForFortune
+     or doRefreshForSystem then
         SKIN:Bang('!Refresh') end
 end
 
@@ -109,6 +116,26 @@ function GenerateNetworkFile()
     end
 
     WriteFile(table.concat(network,"\n"),SKIN:ReplaceVariables("#@#").."network.var")
+
+    return true
+end
+
+-- fortune.var
+function GenerateFortuneFile()
+    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
+
+    if next(ReadIni(SKIN:ReplaceVariables("#@#").."fortune.var")) then return false end
+    local fortune = {}
+
+    local templateFortuneVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateFortuneDefault.inc")
+    fortune = GenerateMetadata(fortune,"FortuneSettings","Lucky Penny","Variables for the fortune","0.0.1")
+    table.insert(fortune,"[Variables]")
+
+    for _,value in ipairs(templateFortuneVars) do
+        table.insert(fortune,value)
+    end
+
+    WriteFile(table.concat(fortune,"\n"),SKIN:ReplaceVariables("#@#").."fortune.var")
 
     return true
 end
