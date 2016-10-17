@@ -12,17 +12,17 @@
 -- Create the files for the variables unless it already exists
 function Initialize()
     -- variables.var
-    local doRefreshForVariables = GenerateVariablesFile()
+    local doRefreshForVariables = GenerateVarsFile("variables","TemplateVariablesDefault","Variables","Variables for the whole skin","")
     -- clocks.var
-    local doRefreshForClocks = GenerateClocksFile()
+    local doRefreshForClocks = GenerateVarsFile("clocks","TemplateClocksDefault","ClocksSettings","Variables for the clocks","")
     -- disks.var
-    local doRefreshForDisks = GenerateDisksFile()
+    local doRefreshForDisks = GenerateVarsFile("disks","TemplateDisksDefault","DisksSettings","Variables for the disks","Disk1")
     -- network.var
-    local doRefreshForNetwork = GenerateNetworkFile()
+    local doRefreshForNetwork = GenerateVarsFile("network","TemplateNetworkDefault","NetworkSettings","Variables for the network","")
     -- fortune.var
-    local doRefreshForFortune = GenerateFortuneFile()
+    local doRefreshForFortune = GenerateVarsFile("fortune","TemplateFortuneDefault","FortuneSettings","Variables for the fortune","")
     -- system.var
-    local doRefreshForSystem = GenerateSystemFile()
+    local doRefreshForSystem = GenerateVarsFile("system","TemplateSystemDefault","SystemSettings","Variables for the system","0")
     
     if doRefreshForVariables
      or doRefreshForClocks
@@ -30,138 +30,31 @@ function Initialize()
      or doRefreshForNetwork
      or doRefreshForFortune
      or doRefreshForSystem then
-        SKIN:Bang('!Refresh') end
+        SKIN:Bang("!Refresh") end
 end
 
--- variables.var
-function GenerateVariablesFile()
+-- Generator for var files
+function GenerateVarsFile(varFileName,templateFileName,name,description,substitute)
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."variables.var")) then return false end
+    if next(ReadIni(SKIN:ReplaceVariables("#@#")..varFileName..".var")) then return false end
     local variables = {}
 
-    local templateVariableVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateVariablesDefault.inc")
-    variables = GenerateMetadata(variables,"Variables","Lucky Penny","Variables for the whole skin","0.0.1")
+    local templateFileVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\"..templateFileName..".inc")
+    variables = GenerateMetadata(variables,name,"Lucky Penny",description,"0.0.1")
     table.insert(variables,"[Variables]")
 
-    for _,value in ipairs(templateVariableVars) do
-        table.insert(variables,value)
-    end
-
-    WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."variables.var")
-
-    return true
-end
-
--- clocks.var
-function GenerateClocksFile()
-    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."clocks.var")) then return false end
-    local clocks = {}
-
-    local templateClocksVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateClocksDefault.inc")
-    clocks = GenerateMetadata(clocks,"ClocksSettings","Lucky Penny","Variables for the clocks","0.0.1")
-    table.insert(clocks,"[Variables]")
-
-    for _,value in ipairs(templateClocksVars) do
-        table.insert(clocks,value)
-    end
-
-    WriteFile(table.concat(clocks,"\n"),SKIN:ReplaceVariables("#@#").."clocks.var")
-
-    return true
-end
-
--- disks.var
-function GenerateDisksFile()
-    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."disks.var")) then return false end
-    local disks = {}
-
-    local templateSystemVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateDisksDefault.inc")
-    disks = GenerateMetadata(disks,"DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
-    table.insert(disks,"[Variables]")
-    table.insert(disks,"DisksTotal=1")
-
-    for _,value in ipairs(templateSystemVars) do
+    for _,value in ipairs(templateFileVars) do
         local str = ""
         if value:find("|") then
-            str = value:gsub("|","Disk1")
+            str = value:gsub("|",substitute)
         else
             str = value
         end
-        table.insert(disks,str)
+        table.insert(variables,str)
     end
 
-    WriteFile(table.concat(disks,"\n"),SKIN:ReplaceVariables("#@#").."disks.var")
-
-    return true
-end
-
--- network.var
-function GenerateNetworkFile()
-    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."network.var")) then return false end
-    local network = {}
-
-    local templateNetworkVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateNetworkDefault.inc")
-    network = GenerateMetadata(network,"NetworkSettings","Lucky Penny","Variables for the network","0.0.1")
-    table.insert(network,"[Variables]")
-
-    for _,value in ipairs(templateNetworkVars) do
-        table.insert(network,value)
-    end
-
-    WriteFile(table.concat(network,"\n"),SKIN:ReplaceVariables("#@#").."network.var")
-
-    return true
-end
-
--- fortune.var
-function GenerateFortuneFile()
-    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."fortune.var")) then return false end
-    local fortune = {}
-
-    local templateFortuneVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateFortuneDefault.inc")
-    fortune = GenerateMetadata(fortune,"FortuneSettings","Lucky Penny","Variables for the fortune","0.0.1")
-    table.insert(fortune,"[Variables]")
-
-    for _,value in ipairs(templateFortuneVars) do
-        table.insert(fortune,value)
-    end
-
-    WriteFile(table.concat(fortune,"\n"),SKIN:ReplaceVariables("#@#").."fortune.var")
-
-    return true
-end
-
--- system.var
-function GenerateSystemFile()
-    dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
-
-    if next(ReadIni(SKIN:ReplaceVariables("#@#").."system.var")) then return false end
-    local system = {}
-
-    local templateSystemVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateSystemDefault.inc")
-    system = GenerateMetadata(system,"SystemSettings","Lucky Penny","Variables for the system","0.0.1")
-    table.insert(system,"[Variables]")
-
-    for _,value in ipairs(templateSystemVars) do
-        local str = ""
-        if value:find("|") then
-            str = value:gsub("|","0")
-        else
-            str = value
-        end
-        table.insert(system,str)
-    end
-
-    WriteFile(table.concat(system,"\n"),SKIN:ReplaceVariables("#@#").."system.var")
+    WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#")..varFileName..".var")
 
     return true
 end

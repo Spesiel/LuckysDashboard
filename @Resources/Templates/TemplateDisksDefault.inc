@@ -1,3 +1,4 @@
+DisksTotal=1
 |Letter=C
 |HideTemperature=0
 |SmartOnSelect=100,250,100
