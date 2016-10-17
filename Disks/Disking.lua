@@ -35,21 +35,5 @@ function Initialize()
     end
     WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
-    -- Sets the widget size
-    local height = 0
-
-    height = disksTotal*30
-
-    for currentDisk=1,disksTotal,1 do
-        if (SKIN:GetVariable("Disk"..currentDisk.."HideTemperature")=="0") and (SKIN:GetVariable("Disk"..currentDisk.."HideActivity")=="1") then
-            height = height + 10
-        end
-        if SKIN:GetVariable("Disk"..currentDisk.."HideActivity")=="0" then
-            height = height + 16
-        end
-    end
-    height = height + 5
-
-    SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
     SKIN:Bang("!UpdateMeter SkinSizing")
 end

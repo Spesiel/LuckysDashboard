@@ -59,10 +59,6 @@ function Initialize()
         refreshGenerated = true
     end
 
-    -- Sets the dialog size based on the number of disks
-    local height = 0
-    local disksTotal = SKIN:GetVariable("DisksTotal")
-
     -- Writes the values to files
     if refreshDisks or refreshGenerated then
         WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."disks.var")
@@ -70,8 +66,5 @@ function Initialize()
 
         SKIN:Bang('!RefreshGroup Disks')
     end
-
-    height = 81+disksTotal*75+5
-    SKIN:Bang("!SetOption SkinSizing H "..height*SKIN:GetVariable("ScaleDisks"))
     SKIN:Bang("!UpdateMeter SkinSizing")
 end
