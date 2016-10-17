@@ -13,10 +13,12 @@
 
 -- Allows for preview of the theme
 function Preview(
+                Description,
                 BackgroundColor,
                 TextColor,
                 MeterColor,
                 BackdropColor)
+    SKIN:Bang('!SetOption Preview_Description Text '..'"Description: '..Description..'"')
     SKIN:Bang('!SetOption Preview_Skin_Background SolidColor '..BackgroundColor)
     SKIN:Bang('!SetOption Preview_Skin_ForegroundTL FontColor '..TextColor)
     SKIN:Bang('!SetOption Preview_Skin_ForegroundBR FontColor '..TextColor)
@@ -59,6 +61,7 @@ function Initialize()
     local content = {}
     for title,pair in pairs(colorSchemes) do
         currentTheme = currentTheme + 1
+        if pair.Description == nil then pair.Description = "" end
         for _,value in ipairs(template) do
             local str = ""
             local st2 = ""
@@ -78,7 +81,7 @@ function Initialize()
             elseif value:find("SolidColor=")        then str = value..pair.BackgroundColor
             elseif value:find("FontColor=")         then str = value..pair.TextColor
             elseif value:find("Text=")              then str = value..pair.Name
-            elseif value:find("MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
+            elseif value:find("MouseOverAction=")   then str = value..("\"('%s','%s','%s','%s','%s')\""):format(pair.Description,pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
             elseif value:find("LeftMouseUpAction=") then str = value..("\"('%s','%s','%s','%s')\""):format(pair.BackgroundColor,pair.TextColor,pair.MeterColor,pair.BackdropColor)
                                                          if (not refreshGenerated) and (generated["Theme_"..title]["LeftMouseUpAction"])~=str:sub(19) then refreshGenerated=true end
             else str = value end
