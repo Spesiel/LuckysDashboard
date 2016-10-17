@@ -200,11 +200,3 @@ Text=W %1Bps
 AutoScale=1
 TransformationMatrix=#Scaling#
 Hidden=#|HideActivity#
-
-[|Dummy]
-Meter=Image
-X=3
-Y=([|TemperatureLabel:H]>[|ActivityWritePercentHistogram:H]?[|Title:Y]+30:[|UsedBar:Y]+4)
-W=30
-H=([|TemperatureLabel:H]>[|ActivityWritePercentHistogram:H]?[|TemperatureLabel:H]:[|ActivityWritePercentHistogram:H])
-TransformationMatrix=#Scaling#

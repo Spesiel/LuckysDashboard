@@ -36,16 +36,15 @@ ScriptFile=#@#\VarFileInit.lua
 [Variables]
 
 ;------------------------------------------------------------------------------
+; Default scale for every window
+
+Scale=1
+Scaling=#Scale#;0;0;#Scale#;#Scale#;#Scale#
+
+;------------------------------------------------------------------------------
 ; Colors
 
 ColorClear=0,0,0,0
-
-;------------------------------------------------------------------------------
-; Clocks-specific constants
-
-; Transformation Matrix for ScaleClock
-Scaling=#ScaleClock#;0;0;#ScaleClock#;#ScaleClock#;#ScaleClock#
-
 
 ;------------------------------------------------------------------------------
 ; Measures Styling
@@ -84,7 +83,7 @@ ClipString=1
 Meter=Image
 X=0
 Y=0
-W=(125*#ScaleClock#)
-H=(([DummyEndPoint:Y]-1+[DummyEndPoint:H]+[DummyEndPoint:X])*#ScaleClock#)
+W=(250*#Scale#)
+H=(([DummyEndPoint:Y]-1+[DummyEndPoint:H]+[DummyEndPoint:X])*#Scale#)
 DynamicVariables=1
 UpdateDivider=-1

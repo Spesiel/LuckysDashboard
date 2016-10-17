@@ -20,3 +20,5 @@ ImageTint=#TextColor#
 ToolTipText=Settings
 LeftMouseUpAction=[!ToggleConfig "#CurrentConfig#\Config" "Config.ini"]
 Hidden=1
+DynamicVariables=1
+UpdateDivider=-1
