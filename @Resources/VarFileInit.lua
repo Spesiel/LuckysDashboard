@@ -12,23 +12,26 @@
 -- Create the files for the variables unless it already exists
 function Initialize()
     -- variables.var
-    local doRefreshForVariables = GenerateVarsFile("variables","TemplateVariablesDefault","Variables","Variables for the whole skin","")
+    local doRefreshForVariables = GenerateVarsFile("variables", "TemplateVariablesDefault", "Variables",        "Variables for the whole skin", "")
     -- clocks.var
-    local doRefreshForClocks = GenerateVarsFile("clocks","TemplateClocksDefault","ClocksSettings","Variables for the clocks","")
+    local doRefreshForClocks    = GenerateVarsFile("clocks",    "TemplateClocksDefault",    "ClocksSettings",   "Variables for the clocks",     "")
     -- disks.var
-    local doRefreshForDisks = GenerateVarsFile("disks","TemplateDisksDefault","DisksSettings","Variables for the disks","Disk1")
+    local doRefreshForDisks     = GenerateVarsFile("disks",     "TemplateDisksDefault",     "DisksSettings",    "Variables for the disks",      "Disk1")
     -- network.var
-    local doRefreshForNetwork = GenerateVarsFile("network","TemplateNetworkDefault","NetworkSettings","Variables for the network","")
+    local doRefreshForNetwork   = GenerateVarsFile("network",   "TemplateNetworkDefault",   "NetworkSettings",  "Variables for the network",    "")
     -- fortune.var
-    local doRefreshForFortune = GenerateVarsFile("fortune","TemplateFortuneDefault","FortuneSettings","Variables for the fortune","")
+    local doRefreshForFortune   = GenerateVarsFile("fortune",   "TemplateFortuneDefault",   "FortuneSettings",  "Variables for the fortune",    "")
+    -- gpus.var
+    local doRefreshForGpus      = GenerateVarsFile("gpus",      "TemplateGpusDefault",      "GpusSettings",     "Variables for the gpus",       "Gpu1")
     -- system.var
-    local doRefreshForSystem = GenerateVarsFile("system","TemplateSystemDefault","SystemSettings","Variables for the system","0")
+    local doRefreshForSystem    = GenerateVarsFile("system",    "TemplateSystemDefault",    "SystemSettings",   "Variables for the system",     "0")
     
     if doRefreshForVariables
      or doRefreshForClocks
      or doRefreshForDisks
      or doRefreshForNetwork
      or doRefreshForFortune
+     or doRefreshForGpus
      or doRefreshForSystem then
         SKIN:Bang("!Refresh") end
 end

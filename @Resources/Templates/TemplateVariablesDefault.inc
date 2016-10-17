@@ -13,4 +13,5 @@
     ScaleNetwork=1
     ScaleUptime=1
     ScaleFortune=1
+    ScaleGpu=1
     ScaleSystem=1

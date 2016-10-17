@@ -3,6 +3,7 @@
 @Resources/disks.var
 @Resources/network.var
 @Resources/fortune.var
+@Resources/gpus.var
 @Resources/system.var
 Disks/Config/generated.inc
 Disks/generated.inc

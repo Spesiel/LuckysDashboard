@@ -1,0 +1,14 @@
+GpusTotal=1
+|SensorId=0xe0001800
+|CoreInstance=0x0
+|CoreUsageEntryId=0x7000000
+|CoreClockEntryId=0x6000000
+|TempEntryId=0x1000000
+|FanOffRpmPercent=2
+|FanRpmEntryId=0x3000000
+|FanPercentEntryId=0x8000000
+|NVidiaAmd=1
+|NVidiaMemoryAllocatedEntryId=0x8000001
+|NVidiaMemoryUsageEntryId=0x7000001
+|AMDD3DMemoryDedicated=0x8000001
+|AMDD3DMemoryTotal=2048
