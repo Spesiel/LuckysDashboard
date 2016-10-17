@@ -51,7 +51,7 @@ function Initialize()
             else
                 str = value
             end
-            table.insert(variables,str)
+            if str:find("DisksTotal")==nil then table.insert(variables,str) end
         end
     end
 
