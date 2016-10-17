@@ -85,6 +85,6 @@ Meter=Image
 X=0
 Y=0
 W=(125*#ScaleClock#)
-H=(([DummyEndPoint:Y]+1+[DummyEndPoint:H]+5)*#ScaleClock#)
+H=(([DummyEndPoint:Y]-1+[DummyEndPoint:H]+[DummyEndPoint:X])*#ScaleClock#)
 DynamicVariables=1
 UpdateDivider=-1
