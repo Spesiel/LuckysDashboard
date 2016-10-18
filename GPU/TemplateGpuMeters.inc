@@ -65,24 +65,26 @@ Substitute="1":"#|FanRpmEntryId#","2":"#|FanPercentEntryId#"
 [|MeasureFanDisabled]
 Measure=Calc
 Formula=#|FanOffRpmPercent#>0?0:1
+IfCondition=(|MeasureFanDisabled=1)
+IfTrueAction=[!HideMeterGroup |FanOff][!DisableMeasureGroup |FanOff]
 
 [|MeasureFanValue]
+Group=|FanOff
 Measure=Plugin
 Plugin=HWiNFO.dll
 HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=CurrentValue
-Disabled=#|MeasureFanDisabled#
 
 [|MeasureFanUnit]
+Group=|FanOff
 Measure=Plugin
 Plugin=HWiNFO.dll
 HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=Units
-Disabled=#|MeasureFanDisabled#
 
 [|MeasureNVidiaAmd]
 Measure=String
@@ -200,6 +202,7 @@ Text=Temp: %1%2
 TransformationMatrix=#Scaling#
 
 [|MeterFan]
+Group=|FanOff
 Meter=String
 MeterStyle=TextStyle
 FontSize=10

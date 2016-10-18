@@ -1,7 +1,7 @@
 ------- Metadata --------------------------------------------------------------
 -- Configuring
 -- Author: Lucky Penny
--- Description: Generates the meters necessary for disks configuration.
+-- Description: Generates the meters necessary for gpus configuration.
 -- License: Creative Commons BY-NC-SA 3.0
 -- Version: 0.0.1
 --
@@ -12,59 +12,59 @@
 function Initialize()
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
-    local disks = ReadIni(SKIN:ReplaceVariables("#@#").."disks.var")
-    local refreshDisks = false
-    if next(disks)==nil then refreshDisks = true end
+    local gpus = ReadIni(SKIN:ReplaceVariables("#@#").."gpus.var")
+    local refreshGpus = false
+    if next(gpus)==nil then refreshGpus = true end
     local generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
     local refreshGenerated = false
     if next(generated)==nil then refreshGenerated = true end
 
-    local templateDiskMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateDiskMeters.inc")
-    local templateDiskVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateDisksDefault.inc")
+    local templateGpuMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#").."TemplateGpuMeters.inc")
+    local templateGpuVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\TemplateGpusDefault.inc")
 
-    -- loop through the data for each disk
+    -- loop through the data for each gpu
     local variables = {}
-    GenerateMetadata(variables,"DisksSettings","Lucky Penny","Variables for the disks","0.0.1")
+    GenerateMetadata(variables,"GpusSettings","Lucky Penny","Variables for the gpus","0.0.1")
     table.insert(variables,"[Variables]")
-    table.insert(variables,"DisksTotal="..disks.Variables.DisksTotal)
+    table.insert(variables,"GpusTotal="..gpus.Variables.GpusTotal)
     local content = {}
-    for loop=1,disks.Variables.DisksTotal,1 do
-        local currentDisk = ("Disk%s"):format(loop)
+    for loop=1,gpus.Variables.GpusTotal,1 do
+        local currentGpu = ("Gpu%s"):format(loop)
 
-        if not disks.Variables[currentDisk.."Letter"] then refreshDisks     = true end
-        if not generated[currentDisk.."Title"]        then refreshGenerated = true end
+        if not gpus.Variables[currentGpu.."SensorId"] then refreshGpus     = true end
+        if not generated[currentGpu.."Title"]        then refreshGenerated = true end
         
-        for _,value in ipairs(templateDiskMeters) do
+        for _,value in ipairs(templateGpuMeters) do
             local str = ""
             if value:find("|") then
-                str = value:gsub("|",currentDisk)
+                str = value:gsub("|",currentGpu)
             else
                 str = value
             end
             table.insert(content,str)
         end
 
-        for _,value in ipairs(templateDiskVars) do
+        for _,value in ipairs(templateGpuVars) do
             local str = ""
             if value:find("|") then
-                str = value:gsub("|",currentDisk)
+                str = value:gsub("|",currentGpu)
             else
                 str = value
             end
-            if str:find("DisksTotal")==nil then table.insert(variables,str) end
+            if str:find("GpusTotal")==nil then table.insert(variables,str) end
         end
     end
 
-    if generated["Disk"..(tonumber(disks.Variables.DisksTotal)+1).."Title"] then
+    if generated["Gpu"..(tonumber(gpus.Variables.GpusTotal)+1).."Title"] then
         refreshGenerated = true
     end
 
     -- Writes the values to files
-    if refreshDisks or refreshGenerated then
-        WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."disks.var")
+    if refreshGpus or refreshGenerated then
+        WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."gpus.var")
         WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
-        SKIN:Bang('!RefreshGroup Disks')
+        SKIN:Bang('!RefreshGroup Gpus')
     end
     SKIN:Bang("!UpdateMeter SkinSizing")
 end
