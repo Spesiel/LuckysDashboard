@@ -19,7 +19,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|SensorId#
 Command1=[!WriteKeyValue Variables |SensorId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|SensorIdLabel]
 Meter=String
@@ -56,7 +56,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|CoreInstance#
 Command1=[!WriteKeyValue Variables |CoreInstance "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|CoreInstanceLabel]
 Meter=String
@@ -93,7 +93,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|CoreUsageEntryId#
 Command1=[!WriteKeyValue Variables |CoreUsageEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|CoreUsageEntryIdLabel]
 Meter=String
@@ -130,7 +130,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|CoreClockEntryId#
 Command1=[!WriteKeyValue Variables |CoreClockEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|CoreClockEntryIdLabel]
 Meter=String
@@ -167,7 +167,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|TempEntryId#
 Command1=[!WriteKeyValue Variables |TempEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|TempEntryIdLabel]
 Meter=String
@@ -231,7 +231,7 @@ W=70
 H=22
 SolidColor=#|FanSetOff#
 Text=Off
-LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 0 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #ColorClear# "#@#gpus.var"][!RefreshGroup Gpus]
+LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 0 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #ColorClear# "#@#gpus.var"][!RefreshGroup Gpu]
 UpdateDivider=-1
 
 [|FanSetRpm]
@@ -245,7 +245,7 @@ W=70
 H=22
 SolidColor=#|FanSetRpm#
 Text=RPM
-LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 1 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #ColorClear# "#@#gpus.var"][!RefreshGroup Gpus]
+LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 1 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #ColorClear# "#@#gpus.var"][!RefreshGroup Gpu]
 UpdateDivider=-1
 
 [|FanSetPercent]
@@ -259,7 +259,7 @@ W=70
 H=22
 SolidColor=#|FanSetPercent#
 Text=%
-LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 2 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #BackdropColor# "#@#gpus.var"][!RefreshGroup Gpus]
+LeftMouseUpAction=[!WriteKeyValue Variables |FanOffRpmPercent 2 "#@#gpus.var"][!WriteKeyValue Variables |FanSetOff #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetRpm #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |FanSetPercent #BackdropColor# "#@#gpus.var"][!RefreshGroup Gpu]
 UpdateDivider=-1
 
 [|FanRpmEntryIdMeasureInput]
@@ -276,7 +276,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|FanRpmEntryId#
 Command1=[!WriteKeyValue Variables |FanRpmEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|FanRpmEntryIdLabel]
 Group=|FanOffRpm
@@ -316,7 +316,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|FanPercentEntryId#
 Command1=[!WriteKeyValue Variables |FanPercentEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|FanPercentEntryIdLabel]
 Group=|FanOffPct
@@ -376,7 +376,7 @@ W=70
 H=22
 SolidColor=#|NVidiaAmdSetNVidia#
 Text=NVidia
-LeftMouseUpAction=[!WriteKeyValue Variables |NVidiaAmd 1 "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetNVidia #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetAmd #ColorClear# "#@#gpus.var"][!RefreshGroup Gpus]
+LeftMouseUpAction=[!WriteKeyValue Variables |NVidiaAmd 1 "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetNVidia #BackdropColor# "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetAmd #ColorClear# "#@#gpus.var"][!RefreshGroup Gpu]
 UpdateDivider=-1
 
 [|NVidiaAmdSetAmd]
@@ -390,7 +390,7 @@ W=70
 H=22
 SolidColor=#|NVidiaAmdSetAmd#
 Text=AMD
-LeftMouseUpAction=[!WriteKeyValue Variables |NVidiaAmd 2 "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetNVidia #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetAmd #BackdropColor# "#@#gpus.var"][!RefreshGroup Gpus]
+LeftMouseUpAction=[!WriteKeyValue Variables |NVidiaAmd 2 "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetNVidia #ColorClear# "#@#gpus.var"][!WriteKeyValue Variables |NVidiaAmdSetAmd #BackdropColor# "#@#gpus.var"][!RefreshGroup Gpu]
 UpdateDivider=-1
 
 [|NVidiaMemoryAllocatedEntryIdMeasureInput]
@@ -407,7 +407,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|NVidiaMemoryAllocatedEntryId#
 Command1=[!WriteKeyValue Variables |NVidiaMemoryAllocatedEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|NVidiaMemoryAllocatedEntryIdLabel]
 Group=|MemNVidia
@@ -447,7 +447,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|NVidiaMemoryUsageEntryId#
 Command1=[!WriteKeyValue Variables |NVidiaMemoryUsageEntryId "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|NVidiaMemoryUsageEntryIdLabel]
 Group=|MemNVidia
@@ -487,7 +487,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|AMDD3DMemoryDedicated#
 Command1=[!WriteKeyValue Variables |AMDD3DMemoryDedicated "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|AMDD3DMemoryDedicatedLabel]
 Group=|MemAmd
@@ -527,7 +527,7 @@ FontFace=Seqoe UI
 FontSize=10
 DefaultValue=#|AMDD3DMemoryTotal#
 Command1=[!WriteKeyValue Variables |AMDD3DMemoryTotal "$UserInput$" "#@#gpus.var"]
-Command2=!RefreshGroup Gpus
+Command2=!RefreshGroup Gpu
 
 [|AMDD3DMemoryTotalLabel]
 Group=|MemAmd

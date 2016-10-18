@@ -64,7 +64,7 @@ function Initialize()
         WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#").."gpus.var")
         WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
-        SKIN:Bang('!RefreshGroup Gpus')
+        SKIN:Bang('!RefreshGroup Gpu')
     end
     SKIN:Bang("!UpdateMeter SkinSizing")
 end
