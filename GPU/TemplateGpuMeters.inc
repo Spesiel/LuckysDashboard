@@ -241,6 +241,7 @@ X=0R
 Y=0R
 MeasureName=|MeasureNVidiaAmdUsage
 Text=%1%
+NumOfDecimals=2
 TransformationMatrix=#Scaling#
 
 [|TempLine]

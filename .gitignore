@@ -8,5 +8,6 @@
 Disks/Config/generated.inc
 Disks/generated.inc
 Themes/generated.inc
+GPU/Config/generated.inc
 GPU/generated.inc
 System/generatedCpuMeters.inc
