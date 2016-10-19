@@ -65,6 +65,8 @@ HWiNFOSensorInstance=#|SmartInstance#
 HWiNFOEntryId=#|SmartTemperatureId#
 HWiNFOType=Units
 DynamicVariables=1
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |TemperatureMeasureUnit]
 Disabled=#|HideTemperature#
 
 ;------------------------------------------------------------------------------

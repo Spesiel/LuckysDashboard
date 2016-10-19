@@ -15,6 +15,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreClockEntryId#
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureCoreClockValue]
 
 [|MeasureCoreClockUnit]
 Measure=Plugin
@@ -23,6 +25,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreClockEntryId#
 HWiNFOType=Units
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureCoreClockUnit]
 
 [|MeasureCoreUsageValue]
 Measure=Plugin
@@ -31,6 +35,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreUsageEntryId#
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureCoreUsageValue]
 
 [|MeasureCoreUsageUnit]
 Measure=Plugin
@@ -39,6 +45,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreUsageEntryId#
 HWiNFOType=Units
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureCoreUsageUnit]
 
 [|MeasureTempValue]
 Measure=Plugin
@@ -47,6 +55,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|TempEntryId#
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureTempValue]
 
 [|MeasureTempUnit]
 Measure=Plugin
@@ -55,6 +65,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|TempEntryId#
 HWiNFOType=Units
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureTempUnit]
 
 [|MeasureFan]
 Measure=String
@@ -76,6 +88,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureFanValue]
 
 [|MeasureFanUnit]
 Group=|FanOff
@@ -85,6 +99,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=Units
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureFanUnit]
 
 [|MeasureNVidiaAmd]
 Measure=String
@@ -103,6 +119,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureNVidiaAmd]
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureNVidiaAmdValue]
 Disabled=#|MeasureNVidiaAmdDisabled#
 
 [|MeasureNVidiaUsageValue]
@@ -112,6 +130,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|NVidiaMemoryUsageEntryId#
 HWiNFOType=CurrentValue
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureNVidiaUsageValue]
 Disabled=[|MeasureNVidiaDisabled]
 
 [|MeasureNVidiaAmdUnit]
@@ -121,6 +141,8 @@ HWiNFOSensorId=#|SensorId#
 HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureNVidiaAmd]
 HWiNFOType=Units
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!UpdateMeasure |MeasureNVidiaAmdUnit]
 Disabled=#|MeasureNVidiaAmdDisabled#
 
 [|MeasureAmdEnabled]
