@@ -15,12 +15,12 @@ SystemCpuClockHideSelect=#ColorClear#
 
 ; Show/Hide Cpu average temperature
 SystemTempAverage=0
-SystemTempAverageOnSelect=100,250,100
+SystemTempAverageOnSelect=#ColorOn#
 SystemTempAverageOffSelect=#BackdropColor#
 
 ; Show/Hide Cpu temperature for each individual core
 SystemTempPerCore=0
-SystemTempPerCoreOnSelect=100,250,100
+SystemTempPerCoreOnSelect=#ColorOn#
 SystemTempPerCoreOffSelect=#BackdropColor#
 
 ;------------------------------------------------------------------------------

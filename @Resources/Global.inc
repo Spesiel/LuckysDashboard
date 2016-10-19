@@ -45,6 +45,8 @@ Scaling=#Scale#;0;0;#Scale#;#Scale#;#Scale#
 ; Colors
 
 ColorClear=0,0,0,0
+ColorOn=100,250,100
+ColorOff=250,100,100
 
 ;------------------------------------------------------------------------------
 ; Measures Styling

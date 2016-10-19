@@ -1,7 +1,7 @@
 DisksTotal=1
 |Letter=C
 |HideTemperature=0
-|SmartOnSelect=100,250,100
+|SmartOnSelect=#ColorOn#
 |SmartOffSelect=#BackdropColor#
 |SmartSensorId=0xf0000100
 |SmartInstance=0x0
@@ -11,5 +11,5 @@ DisksTotal=1
 |ActivityInstance=0x0
 |ActivityReadPercentId=0x7000000
 |ActivityWritePercentId=0x7000001
-|ActivityOnSelect=100,250,100
+|ActivityOnSelect=#ColorOn#
 |ActivityOffSelect=#BackdropColor#

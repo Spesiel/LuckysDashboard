@@ -116,7 +116,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|SmartOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "0" "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "0" "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect #ColorOn# "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|HideTemperatureOff]
 Meter=Image
@@ -125,7 +125,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|SmartOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "1" "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideTemperature "1" "#@#disks.var"][!WriteKeyValue Variables |SmartOffSelect #ColorOff# "#@#disks.var"][!WriteKeyValue Variables |SmartOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|SmartSensorIdInput]
 Meter=String
@@ -259,7 +259,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|ActivityOnSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "0" "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect 100,250,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "0" "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect #ColorOn# "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|HideActivityOff]
 Meter=Image
@@ -268,7 +268,7 @@ Y=0r
 W=14
 H=14
 SolidColor=#|ActivityOffSelect#
-LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "1" "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect 250,100,100 "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
+LeftMouseUpAction=[!WriteKeyValue Variables |HideActivity "1" "#@#disks.var"][!WriteKeyValue Variables |ActivityOffSelect #ColorOff# "#@#disks.var"][!WriteKeyValue Variables |ActivityOnSelect #BackdropColor# "#@#disks.var"][!RefreshGroup Disks]
 
 [|ActivitySensorIdInput]
 Meter=String
