@@ -15,8 +15,8 @@ ContextAction3=[!ActivateConfig "#RootConfig#\ScaleSettings" "ScaleSettings.ini"
 ContextTitle4=Configure Themes
 ContextAction4=[!ActivateConfig "#RootConfig#\Themes" "Themes.ini"]
 ContextTitle5=-
-ContextTitle6=Refresh All
-ContextAction6=[!RefreshApp]
+ContextTitle6=Refresh
+ContextAction6=[!Refresh]
 
 LeftMouseDoubleClickAction=!SkinCustomMenu
 
