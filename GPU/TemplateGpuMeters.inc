@@ -199,7 +199,7 @@ X=5
 Y=([|MeterName:Y]+15)
 MeasureName=|MeasureCoreUsageValue
 MeasureName2=|MeasureCoreUsageUnit
-Text=Usage: %1%2
+Text=Usage %1%2
 TransformationMatrix=#Scaling#
 
 [|UsageBar]
@@ -212,18 +212,28 @@ H=50
 MeasureName=|MeasureCoreUsageValue
 TransformationMatrix=#Scaling#
 
-[|MeterTemperature]
+[|MeterTemperatureLabel]
 Meter=String
 MeterStyle=TextStyle
 FontSize=10
 X=10
 Y=4R
-MeasureName=|MeasureTempValue
-MeasureName2=|MeasureTempUnit
-Text=Temp: %1%2
+Text=Temp
 TransformationMatrix=#Scaling#
 
-[|MeterFan]
+[|MeterTemperature]
+Meter=String
+MeterStyle=TextStyle
+StringAlign=Right
+FontSize=10
+X=90
+Y=0r
+MeasureName=|MeasureTempValue
+MeasureName2=|MeasureTempUnit
+Text=%1%2
+TransformationMatrix=#Scaling#
+
+[|MeterFanLabel]
 Group=|FanOff
 Meter=String
 MeterStyle=TextStyle
@@ -232,7 +242,20 @@ X=10
 Y=0R
 MeasureName=|MeasureFanValue
 MeasureName2=|MeasureFanUnit
-Text=Fan: %1%2
+Text=Fan
+TransformationMatrix=#Scaling#
+
+[|MeterFan]
+Group=|FanOff
+Meter=String
+MeterStyle=TextStyle
+StringAlign=Right
+FontSize=10
+X=90
+Y=0r
+MeasureName=|MeasureFanValue
+MeasureName2=|MeasureFanUnit
+Text=%1%2
 TransformationMatrix=#Scaling#
 
 [|MeterMemoryLabel]
@@ -241,17 +264,17 @@ MeterStyle=TextStyle
 StringAlign=Right
 FontSize=10
 X=240
-Y=([|MeterTemperature:Y]+7)
-Text=:Mem
+Y=([|MeterTemperatureLabel:Y]+7)
+Text=Mem
 TransformationMatrix=#Scaling#
 
 [|MeterMemory]
 Meter=String
 MeterStyle=TextStyle
-StringAling=Right
+StringAlign=Right
 FontSize=10
-X=-85r
-Y=([|MeterTemperature:Y])
+X=-37r
+Y=([|MeterTemperatureLabel:Y])
 MeasureName=|MeasureNVidiaAmdValue
 MeasureName2=|MeasureNVidiaAmdUnit
 Text=%1%2
@@ -262,7 +285,7 @@ Meter=String
 MeterStyle=TextStyle
 StringAlign=Right
 FontSize=10
-X=0R
+X=0r
 Y=0R
 MeasureName=|MeasureNVidiaAmdUsage
 Text=%1%
