@@ -188,7 +188,7 @@ X=245
 Y=([|MeterName:Y]+16)
 MeasureName=|MeasureCoreClockValue
 MeasureName2=|MeasureCoreClockUnit
-Text=%1%2 :Clock
+Text=%1%2 Clock
 TransformationMatrix=#Scaling#
 
 [|MeterCoreUsage]
