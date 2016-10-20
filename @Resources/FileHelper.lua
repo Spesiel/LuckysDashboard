@@ -9,6 +9,8 @@
 -- WriteIni(inputtable,filepath): Writes the ini data to file.
 -- ReadFile(filepath): Reads a file as it is and returns it as a table.
 -- WriteFile(inputtable,filepath): Writes the data to file.
+-- GenerateFile(varForTotal,templateFileName,itemBaseName): Generates
+--             generated.inc file based on informations
 -------------------------------------------------------------------------------
 
 
@@ -93,4 +95,31 @@ function GenerateMetadata(inputtable,name,author,information,version)
     table.insert(inputtable,"License=Creative Commons BY-NC-SA 3.0")
     table.insert(inputtable,"Version="..version.."\n")
     return inputtable
+end
+
+function GenerateFile(varForTotal,templateFileName,itemBaseName)
+    local varTotal = SKIN:GetVariable(varForTotal)
+
+    local needRefresh = next(ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc"))
+    -- Loads the template
+    local template = {}
+    template = ReadFile(SKIN:ReplaceVariables("#CurrentPath#")..templateFileName..".inc")
+
+    -- loop through the data for each item
+    local content = {}
+    for loop=1,varTotal,1 do
+        local currentItem = itemBaseName..loop
+        for _,value in ipairs(template) do
+            local str = ""
+            if value:find("|") then
+                str = value:gsub("|",currentItem)
+            else
+                str = value
+            end
+            table.insert(content,str)
+        end
+    end
+    WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+
+    if needRefresh==nil then SKIN:Bang("!Refresh") end
 end
