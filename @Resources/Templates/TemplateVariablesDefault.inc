@@ -14,4 +14,4 @@
     ScaleUptime=1
     ScaleFortune=1
     ScaleGpu=1
-    ScaleSystem=1
+    ScaleCpu=1

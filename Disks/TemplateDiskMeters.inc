@@ -55,6 +55,8 @@ HWiNFOSensorInstance=#|SmartInstance#
 HWiNFOEntryId=#|SmartTemperatureId#
 HWiNFOType=CurrentValue
 DynamicVariables=1
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!RefreshGroup Disks]
 Disabled=#|HideTemperature#
 
 [|TemperatureMeasureUnit]
@@ -66,7 +68,7 @@ HWiNFOEntryId=#|SmartTemperatureId#
 HWiNFOType=Units
 DynamicVariables=1
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |TemperatureMeasureUnit]
+IfMatchAction=[!RefreshGroup Disks]
 Disabled=#|HideTemperature#
 
 ;------------------------------------------------------------------------------
@@ -80,6 +82,8 @@ HWiNFOSensorInstance=#|ActivityInstance#
 HWiNFOEntryId=#|ActivityReadPercentId#
 HWiNFOType=CurrentValue
 DynamicVariables=1
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!RefreshGroup Disks]
 Disabled=#|HideActivity#
 
 [|ActivityReadRateMeasure]
@@ -97,6 +101,8 @@ HWiNFOSensorInstance=#|ActivityInstance#
 HWiNFOEntryId=#|ActivityWritePercentId#
 HWiNFOType=CurrentValue
 DynamicVariables=1
+IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
+IfMatchAction=[!RefreshGroup Disks]
 Disabled=#|HideActivity#
 
 [|ActivityWriteRateMeasure]

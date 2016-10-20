@@ -16,7 +16,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreClockEntryId#
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureCoreClockValue]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureCoreClockUnit]
 Measure=Plugin
@@ -26,7 +26,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreClockEntryId#
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureCoreClockUnit]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureCoreUsageValue]
 Measure=Plugin
@@ -36,7 +36,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreUsageEntryId#
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureCoreUsageValue]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureCoreUsageUnit]
 Measure=Plugin
@@ -46,7 +46,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|CoreUsageEntryId#
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureCoreUsageUnit]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureTempValue]
 Measure=Plugin
@@ -56,7 +56,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|TempEntryId#
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureTempValue]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureTempUnit]
 Measure=Plugin
@@ -66,7 +66,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|TempEntryId#
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureTempUnit]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureFan]
 Measure=String
@@ -89,7 +89,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureFanValue]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureFanUnit]
 Group=|FanOff
@@ -100,7 +100,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureFan]
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureFanUnit]
+IfMatchAction=[!RefreshGroup Gpus]
 
 [|MeasureNVidiaAmd]
 Measure=String
@@ -120,7 +120,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureNVidiaAmd]
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureNVidiaAmdValue]
+IfMatchAction=[!RefreshGroup Gpus]
 Disabled=#|MeasureNVidiaAmdDisabled#
 
 [|MeasureNVidiaUsageValue]
@@ -131,7 +131,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=#|NVidiaMemoryUsageEntryId#
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureNVidiaUsageValue]
+IfMatchAction=[!RefreshGroup Gpus]
 Disabled=[|MeasureNVidiaDisabled]
 
 [|MeasureNVidiaAmdUnit]
@@ -142,7 +142,7 @@ HWiNFOSensorInstance=#|CoreInstance#
 HWiNFOEntryId=[|MeasureNVidiaAmd]
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!UpdateMeasure |MeasureNVidiaAmdUnit]
+IfMatchAction=[!RefreshGroup Gpus]
 Disabled=#|MeasureNVidiaAmdDisabled#
 
 [|MeasureAmdEnabled]

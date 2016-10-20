@@ -24,7 +24,7 @@ function Initialize()
     -- gpus.var
     local doRefreshForGpus      = GenerateVarsFile("gpus",      "TemplateGpusDefault",      "GpusSettings",     "Variables for the gpus",       "Gpu1")
     -- system.var
-    local doRefreshForSystem    = GenerateVarsFile("system",    "TemplateSystemDefault",    "SystemSettings",   "Variables for the system",     "0")
+    local doRefreshForSystem    = GenerateVarsFile("system",    "TemplateSystemDefault",    "SystemSettings",   "Variables for the system",     "1")
     
     if doRefreshForVariables
      or doRefreshForClocks
