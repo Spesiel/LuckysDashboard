@@ -10,7 +10,10 @@
 -- ReadFile(filepath): Reads a file as it is and returns it as a table.
 -- WriteFile(inputtable,filepath): Writes the data to file.
 -- GenerateFile(varForTotal,templateFileName,itemBaseName): Generates
---             generated.inc file based on informations
+--				generated.inc file based on informations
+-- GenerateFileConfig(varForTotal,varFileName,templateForDefault,
+--				templateForMeters,groupName,itemBaseName,identifier): Generates
+--				generated.inc and variables file depending on context
 -------------------------------------------------------------------------------
 
 
@@ -122,4 +125,62 @@ function GenerateFile(varForTotal,templateFileName,itemBaseName)
     WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
 
     if needRefresh==nil then SKIN:Bang("!Refresh") end
+end
+
+function GenerateFileConfig(varFileName,templateForDefault,templateForMeters,groupName,itemBaseName,identifier)
+    local varTotal = SKIN:GetVariable(groupName.."Total")
+
+    local varFile = ReadIni(SKIN:ReplaceVariables("#@#")..varFileName..".var")
+    local refreshNeeded = false
+    if next(varFile)==nil then refreshNeeded = true end
+    local generated = ReadIni(SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+    local refreshGenerated = false
+    if next(generated)==nil then refreshGenerated = true end
+
+    local templateVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\"..templateForDefault..".inc")
+    local templateMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#")..templateForMeters..".inc")
+
+    -- loop through the data for each disk
+    local variables = GenerateMetadata({},groupName.."Settings","Lucky Penny","Variables for the "..varFileName,"0.0.1")
+    table.insert(variables,"[Variables]")
+    table.insert(variables,groupName.."Total="..varTotal)
+    local content = {}
+    for loop=1,varTotal,1 do
+        local currentItem = itemBaseName..loop
+
+        if not varFile.Variables[currentItem..identifier] then refreshNeeded    = true end
+        if not generated[currentItem.."Title"]            then refreshGenerated = true end
+        
+        for _,value in ipairs(templateMeters) do
+            local str = ""
+            if value:find("|") then
+                str = value:gsub("|",currentItem)
+            else
+                str = value
+            end
+            table.insert(content,str)
+        end
+
+        for _,value in ipairs(templateVars) do
+            local str = ""
+            if value:find("|") then
+                str = value:gsub("|",currentItem)
+            else
+                str = value
+            end
+            if str:find(groupName.."Total")==nil then table.insert(variables,str) end
+        end
+    end
+
+    if generated[itemBaseName..(tonumber(varTotal)+1).."Title"] then
+        refreshGenerated = true
+    end
+
+    -- Writes the values to files
+    if refreshNeeded or refreshGenerated then
+        WriteFile(table.concat(variables,"\n"),SKIN:ReplaceVariables("#@#")..varFileName..".var")
+        WriteFile(table.concat(content,"\n"),SKIN:ReplaceVariables("#CurrentPath#").."generated.inc")
+
+        SKIN:Bang("!RefreshGroup "..groupName)
+    end
 end
