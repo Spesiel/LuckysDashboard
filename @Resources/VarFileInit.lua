@@ -12,19 +12,19 @@
 -- Create the files for the variables unless it already exists
 function Initialize()
     -- variables.var
-    local doRefreshForVariables = GenerateVarsFile("variables", "TemplateVariablesDefault", "Variables",        "Variables for the whole skin", "")
+    local doRefreshForVariables = GenerateVarsFile("variables", "TemplateVariablesDefault", "Variables",        "")
     -- clocks.var
-    local doRefreshForClocks    = GenerateVarsFile("clocks",    "TemplateClocksDefault",    "ClocksSettings",   "Variables for the clocks",     "")
+    local doRefreshForClocks    = GenerateVarsFile("clocks",    "TemplateClocksDefault",    "ClocksSettings",   "")
     -- disks.var
-    local doRefreshForDisks     = GenerateVarsFile("disks",     "TemplateDisksDefault",     "DisksSettings",    "Variables for the disks",      "Disk1")
+    local doRefreshForDisks     = GenerateVarsFile("disks",     "TemplateDisksDefault",     "DisksSettings",    "Disk1")
     -- network.var
-    local doRefreshForNetwork   = GenerateVarsFile("network",   "TemplateNetworkDefault",   "NetworkSettings",  "Variables for the network",    "")
+    local doRefreshForNetwork   = GenerateVarsFile("network",   "TemplateNetworkDefault",   "NetworkSettings",  "")
     -- fortune.var
-    local doRefreshForFortune   = GenerateVarsFile("fortune",   "TemplateFortuneDefault",   "FortuneSettings",  "Variables for the fortune",    "")
+    local doRefreshForFortune   = GenerateVarsFile("fortune",   "TemplateFortuneDefault",   "FortuneSettings",  "")
     -- gpus.var
-    local doRefreshForGpus      = GenerateVarsFile("gpus",      "TemplateGpusDefault",      "GpusSettings",     "Variables for the gpus",       "Gpu1")
-    -- system.var
-    local doRefreshForSystem    = GenerateVarsFile("system",    "TemplateSystemDefault",    "SystemSettings",   "Variables for the system",     "1")
+    local doRefreshForGpus      = GenerateVarsFile("gpus",      "TemplateGpusDefault",      "GpusSettings",     "Gpu1")
+    -- cpu.var
+    local doRefreshForCpu       = GenerateVarsFile("cpu",       "TemplateCpuDefault",       "CpuSettings",      "Cpu1")
     
     if doRefreshForVariables
      or doRefreshForClocks
@@ -32,19 +32,19 @@ function Initialize()
      or doRefreshForNetwork
      or doRefreshForFortune
      or doRefreshForGpus
-     or doRefreshForSystem then
+     or doRefreshForCpu then
         SKIN:Bang("!Refresh") end
 end
 
 -- Generator for var files
-function GenerateVarsFile(varFileName,templateFileName,name,description,substitute)
+function GenerateVarsFile(varFileName,templateFileName,name,substitute)
     dofile(SKIN:ReplaceVariables("#@#").."FileHelper.lua")
 
     if next(ReadIni(SKIN:ReplaceVariables("#@#")..varFileName..".var")) then return false end
     local variables = {}
 
     local templateFileVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\"..templateFileName..".inc")
-    variables = GenerateMetadata(variables,name,"Lucky Penny",description,"0.0.3")
+    variables = GenerateMetadata(variables,name,"Lucky Penny","Variables for the "..varFileName,"0.0.3")
     table.insert(variables,"[Variables]")
 
     for _,value in ipairs(templateFileVars) do

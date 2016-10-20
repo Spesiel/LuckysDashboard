@@ -4,11 +4,11 @@
 @Resources/network.var
 @Resources/fortune.var
 @Resources/gpus.var
-@Resources/system.var
+@Resources/cpu.var
 About/generated.inc
 Themes/generated.inc
 Disks/Config/generated.inc
 Disks/generated.inc
 GPU/Config/generated.inc
 GPU/generated.inc
-System/generated.inc
+Cpu/generated.inc
