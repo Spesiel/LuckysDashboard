@@ -80,7 +80,7 @@ function ReadFile(filepath)
 
 	local content = {}
 	for line in file:lines() do table.insert(content,line) end
-
+    file:close()
 	return content
 end
 
