@@ -3,7 +3,7 @@
 -- Author: Lucky Penny
 -- Description: Generates the meters for the system widget.
 -- License: Creative Commons BY-NC-SA 3.0
--- Version: 0.0.1
+-- Version: 0.0.3
 --
 -- Initialize(): As described. 
 -------------------------------------------------------------------------------

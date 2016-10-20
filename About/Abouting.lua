@@ -3,7 +3,7 @@
 -- Author: Lucky Penny
 -- Description: Lists widgets and display a list of them and their options.
 -- License: Creative Commons BY-NC-SA 3.0
--- Version: 0.0.1
+-- Version: 0.0.3
 --
 -- Initialize(): As described. 
 -------------------------------------------------------------------------------

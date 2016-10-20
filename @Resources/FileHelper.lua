@@ -3,7 +3,7 @@
 -- Author: Lucky Penny
 -- Description: Methods for file manipulations within the skin.
 -- License: Creative Commons BY-NC-SA 3.0
--- Version: 0.0.1
+-- Version: 0.0.3
 --
 -- ReadIni(filepath): Reads an ini file and returns it as a table.
 -- WriteIni(inputtable,filepath): Writes the ini data to file.
@@ -141,7 +141,7 @@ function GenerateFileConfig(varFileName,templateForDefault,templateForMeters,gro
     local templateMeters = ReadFile(SKIN:ReplaceVariables("#CurrentPath#")..templateForMeters..".inc")
 
     -- loop through the data for each disk
-    local variables = GenerateMetadata({},groupName.."Settings","Lucky Penny","Variables for the "..varFileName,"0.0.1")
+    local variables = GenerateMetadata({},groupName.."Settings","Lucky Penny","Variables for the "..varFileName,"0.0.3")
     table.insert(variables,"[Variables]")
     table.insert(variables,groupName.."Total="..varTotal)
     local content = {}

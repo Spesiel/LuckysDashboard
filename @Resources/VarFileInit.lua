@@ -3,7 +3,7 @@
 -- Author: Lucky Penny
 -- Description: Creates all variables files with default values.
 -- License: Creative Commons BY-NC-SA 3.0
--- Version: 0.0.1
+-- Version: 0.0.3
 --
 -- Initialize(): As described
 -------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ function GenerateVarsFile(varFileName,templateFileName,name,description,substitu
     local variables = {}
 
     local templateFileVars = ReadFile(SKIN:ReplaceVariables("#@#").."Templates\\"..templateFileName..".inc")
-    variables = GenerateMetadata(variables,name,"Lucky Penny",description,"0.0.1")
+    variables = GenerateMetadata(variables,name,"Lucky Penny",description,"0.0.3")
     table.insert(variables,"[Variables]")
 
     for _,value in ipairs(templateFileVars) do

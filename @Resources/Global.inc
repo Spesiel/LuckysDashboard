@@ -25,7 +25,7 @@ Name=GlobalSettings
 Author=Lucky Penny
 Information=Default values for every component
 License=Creative Commons BY-NC-SA 3.0
-Version=0.0.1
+Version=0.0.3
 
 [VarFileInit]
 Measure=Script

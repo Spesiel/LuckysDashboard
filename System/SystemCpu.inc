@@ -6,7 +6,7 @@ Name=SystemCpu
 Author=Lucky Penny
 Information=Displays informations about the cpu(s).
 License=Creative Commons BY-NC-SA 3.0
-Version=0.0.1
+Version=0.0.3
 
 ; CPU (all cores) Usage
 

@@ -3,7 +3,7 @@ Name=ClockScale
 Author=Lucky Penny
 Information=Display the bar used for manipulating the scale of the Clock widgets
 License=Creative Commons BY-NC-SA 3.0
-Version=0.0.1
+Version=0.0.3
 
 ;------------------------------------------------------------------------------
 ; Measures

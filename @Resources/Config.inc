@@ -3,7 +3,7 @@ Name=Config
 Author=Lucky Penny
 Information=Meters used on components to access the settings
 License=Creative Commons BY-NC-SA 3.0
-Version=0.0.1
+Version=0.0.3
 
 [SkinSizing]
 MouseOverAction=!ShowMeter MeterConfig

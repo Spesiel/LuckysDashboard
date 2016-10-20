@@ -3,7 +3,7 @@ Name=Controls
 Author=Lucky Penny
 Information=Meters used in modal windows
 License=Creative Commons BY-NC-SA 3.0
-Version=0.0.1
+Version=0.0.3
 
 [Header]
 Meter=Image
