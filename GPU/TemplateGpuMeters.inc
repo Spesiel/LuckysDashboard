@@ -163,7 +163,7 @@ Formula=#|NVidiaAmd#=1?1:0
 
 [|MeasureNVidiaAmdUsage]
 Measure=Calc
-Formula=[|MeasureAmdEnabled]*([|MeasureNVidiaAmdValue]/#|AMDD3DMemoryTotal#)+[|MeasureNVidiaEnabled]*([|MeasureNVidiaUsageValue])
+Formula=[|MeasureAmdEnabled]*(100*[|MeasureNVidiaAmdValue]/#|AMDD3DMemoryTotal#)+[|MeasureNVidiaEnabled]*([|MeasureNVidiaUsageValue])
 DynamicVariables=1
 
 ;------------------------------------------------------------------------------
@@ -289,7 +289,6 @@ X=0r
 Y=0R
 MeasureName=|MeasureNVidiaAmdUsage
 Text=%1%
-NumOfDecimals=2
 TransformationMatrix=#Scaling#
 
 [|TempLine]
