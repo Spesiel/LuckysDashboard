@@ -295,6 +295,7 @@ TransformationMatrix=#Scaling#
 Meter=Histogram
 MeterStyle=HistogramStyle
 GraphStart=Left
+Flip=1
 X=5
 Y=([|MeterFan:Y]+35)
 W=117
@@ -305,6 +306,7 @@ TransformationMatrix=#Scaling#
 [|MemLine]
 Meter=Histogram
 MeterStyle=HistogramStyle
+Flip=1
 X=128
 Y=([|MeterFan:Y]+35)
 W=117
