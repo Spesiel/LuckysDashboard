@@ -8,7 +8,7 @@ HWiNFOSensorInstance=#CpuTempInstance#
 HWiNFOEntryId=#CpuTemp|TemperatureId#
 HWiNFOType=CurrentValue
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!RefreshGroup Cpu]
+IfMatchAction=[!RefreshGroup Cpus]
 
 [|MeasureTemperatureUnit]
 Measure=Plugin
@@ -18,7 +18,7 @@ HWiNFOSensorInstance=#CpuTempInstance#
 HWiNFOEntryId=#CpuTemp|TemperatureId#
 HWiNFOType=Units
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
-IfMatchAction=[!RefreshGroup Cpu]
+IfMatchAction=[!RefreshGroup Cpus]
 
 ;------------------------------------------------------------------------------
 
