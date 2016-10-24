@@ -8,6 +8,7 @@ Version=0.0.3
 [Variables]
 CpuOverallDisplayDisabled=0
 CpuOverallDisplayClockDisabled=0
+CpuOverallDisplayFanDisabled=0
 CpuOverallDisplayUsageDisabled=0
 CpuOverallDisplayGraphDisabled=0
 
