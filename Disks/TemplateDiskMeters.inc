@@ -57,6 +57,8 @@ HWiNFOType=CurrentValue
 DynamicVariables=1
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
 IfMatchAction=[!RefreshGroup Disks]
+IfMatch2=HWI_ERROR_ENTRY_NOT_Connected
+IfMatchAction2=[!RefreshGroup Cpus]
 Disabled=#|HideTemperature#
 
 [|TemperatureMeasureUnit]
@@ -69,6 +71,8 @@ HWiNFOType=Units
 DynamicVariables=1
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
 IfMatchAction=[!RefreshGroup Disks]
+IfMatch2=HWI_ERROR_ENTRY_NOT_Connected
+IfMatchAction2=[!RefreshGroup Cpus]
 Disabled=#|HideTemperature#
 
 ;------------------------------------------------------------------------------
@@ -84,6 +88,8 @@ HWiNFOType=CurrentValue
 DynamicVariables=1
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
 IfMatchAction=[!RefreshGroup Disks]
+IfMatch2=HWI_ERROR_ENTRY_NOT_Connected
+IfMatchAction2=[!RefreshGroup Cpus]
 Disabled=#|HideActivity#
 
 [|ActivityReadRateMeasure]
@@ -103,6 +109,8 @@ HWiNFOType=CurrentValue
 DynamicVariables=1
 IfMatch=HWI_ERROR_ENTRY_NOT_FOUND
 IfMatchAction=[!RefreshGroup Disks]
+IfMatch2=HWI_ERROR_ENTRY_NOT_Connected
+IfMatchAction2=[!RefreshGroup Cpus]
 Disabled=#|HideActivity#
 
 [|ActivityWriteRateMeasure]
