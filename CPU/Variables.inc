@@ -10,7 +10,7 @@ CpuOverallDisplayDisabled=0
 CpuOverallDisplayClockDisabled=0
 CpuOverallDisplayFanDisabled=0
 CpuOverallDisplayUsageDisabled=0
-CpuOverallDisplayGraphDisabled=0
+CpuOverallDisplayTemperatureDisabled=0
 
 CpuCoresDisplayDisabled=0
 CpuCoresDisplayUsageDisabled=0
@@ -30,3 +30,4 @@ CpuFanEntryId=0x3000000
 ; Temperature informations
 CpuTempSensorId=0xf0000400
 CpuTempInstance=0x0
+CpuTempEntryId=0x100007f
